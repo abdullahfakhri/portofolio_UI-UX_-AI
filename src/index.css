@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-navy-900 text-gray-300 font-sans;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Reference uses the Unbounded display face for every heading */
+  h1, h2, h3, h4 {
+    @apply font-display text-white font-semibold;
+  }
+
+  a, button, [role="button"], input, textarea, select, label {
+    cursor: none;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0.6rem;
+    @apply bg-navy-950;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-accent rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent-light;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-6xl mx-auto px-6 py-20;
+  }
+
+  /* Centered display title — accent the highlighted word with a <span> */
+  .section-title {
+    @apply font-display text-3xl md:text-4xl font-semibold text-center mb-4 text-white leading-tight;
+  }
+  .section-title span {
+    @apply text-accent;
+  }
+
+  .section-subtitle {
+    @apply text-gray-400 text-center mb-16 text-lg;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-accent via-accent-purple to-accent-indigo bg-clip-text text-transparent;
+  }
+
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl;
+  }
+
+  /* Reference dark card surface with large radius */
+  .surface-card {
+    @apply relative bg-container rounded-[2.5rem] overflow-hidden border border-white/[0.06];
+  }
+
+  /* Pill button: dark fill, accent border, outer + inset glow */
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-display font-semibold text-white bg-navy-900;
+    border: 3px solid theme('colors.accent.DEFAULT');
+    box-shadow:
+      0 8px 32px rgba(139, 115, 230, 0.45),
+      inset 8px -8px 30px rgba(111, 79, 222, 0.55);
+    transition: box-shadow 0.4s ease, transform 0.3s ease;
+  }
+  .btn:hover {
+    box-shadow:
+      0 8px 48px rgba(139, 115, 230, 0.7),
+      inset 8px -8px 30px rgba(111, 79, 222, 0.55);
+  }
+
+  /* Ghost pill (secondary) */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-display font-semibold text-white bg-white/5 border border-white/15 backdrop-blur-sm transition-all duration-300;
+  }
+  .btn-ghost:hover {
+    @apply bg-white/10 border-accent/50;
+  }
+
+  /* Legacy aliases kept so existing markup still styles correctly */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-8 py-3 font-display font-semibold text-white bg-navy-900;
+    border: 3px solid theme('colors.accent.DEFAULT');
+    box-shadow:
+      0 8px 32px rgba(139, 115, 230, 0.45),
+      inset 8px -8px 30px rgba(111, 79, 222, 0.55);
+    transition: box-shadow 0.4s ease, transform 0.3s ease;
+  }
+  .btn-primary:hover {
+    box-shadow:
+      0 8px 48px rgba(139, 115, 230, 0.7),
+      inset 8px -8px 30px rgba(111, 79, 222, 0.55);
+  }
+  .btn-outline {
+    @apply px-8 py-3 rounded-full font-display font-semibold text-white border border-accent/50 hover:border-accent hover:bg-accent/10 transition-all duration-300;
+  }
+
+  /* Skill / tech pill tag (reference services__skill) */
+  .skill-pill {
+    @apply inline-flex items-center rounded-full border border-white/30 bg-container px-3 py-1 text-xs font-display text-white;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-radial {
+    background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
+  }
+
+  .hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ===== Animated gradient blobs (reference signature) ===== */
+.blob-animate {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(180deg, #6f4fde 20%, #a99cf0 100%);
+  border-radius: 50%;
+  position: absolute;
+  filter: blur(35px);
+  z-index: 0;
+  animation: blobspin 5s linear infinite;
+  pointer-events: none;
+}
+
+/* Large static blurred glow used inside cards */
+.blob {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(180deg, #8b73e6 0%, #6f4fde 100%);
+  border-radius: 50%;
+  filter: blur(50px);
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes blobspin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
