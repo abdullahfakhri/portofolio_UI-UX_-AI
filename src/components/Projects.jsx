@@ -1,15 +1,45 @@
 import { useRef, useEffect, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { FiArrowUpRight } from 'react-icons/fi';
+import { Link as RouterLink } from 'react-router-dom';
 import { projects } from '../data/portfolioData';
 
 function ProjectCard({ project }) {
   const num = String(project.id).padStart(2, '0');
 
+  // Special "Coming Soon" card — shows a Lottie animation instead of a project.
+  if (project.comingSoon) {
+    return (
+      <div className="surface-card p-7 group h-full flex flex-col">
+        <div className="relative z-10 flex items-center justify-between mb-6">
+          <span className="font-display font-black leading-none text-white" style={{ fontSize: '2.5rem' }}>
+            {num}
+          </span>
+          <span className="font-display text-gray-300 text-base">{project.category}</span>
+        </div>
+        <h3 className="relative z-10 font-display font-bold text-xl mb-4 text-white">{project.title}</h3>
+        <div className="relative z-10 mb-6">
+          <p className="text-gray-400 text-sm leading-relaxed">{project.techstack}</p>
+        </div>
+        <div className="relative z-10 rounded-2xl overflow-hidden aspect-[4/3] mt-auto grid place-items-center bg-navy-800">
+          <dotlottie-wc
+            src={project.lottie}
+            speed="1"
+            loop
+            autoplay
+            style={{ width: '80%', height: '80%' }}
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="surface-card p-7 group h-full flex flex-col">
       {/* Accent glow blob inside the card (reference projects__card .blob) */}
-      <div className="blob" style={{ right: '-7rem', bottom: '-6rem', width: '260px', height: '260px' }} />
+      {!project.image && (
+        <div className="blob" style={{ right: '-7rem', bottom: '-6rem', width: '260px', height: '260px' }} />
+      )}
 
       {/* Top row: number + category label */}
       <div className="relative z-10 flex items-center justify-between mb-6">
@@ -43,21 +73,13 @@ function ProjectCard({ project }) {
         }}
       >
         {/* Circular hover arrow (reference projects__button) */}
-        {project.link ? (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Open ${project.title}`}
-            className="absolute top-3 right-3 z-20 grid place-items-center w-12 h-12 rounded-full bg-navy-900 border-[3px] border-accent text-white text-2xl opacity-0 group-hover:opacity-100 transition-all duration-300 hover:shadow-[0_0_24px_#8b73e6]"
-          >
-            <FiArrowUpRight />
-          </a>
-        ) : (
-          <span className="absolute top-3 right-3 z-20 grid place-items-center w-12 h-12 rounded-full bg-navy-900 border-[3px] border-accent text-white text-2xl opacity-0 group-hover:opacity-100 transition-all duration-300">
-            <FiArrowUpRight />
-          </span>
-        )}
+        <RouterLink
+          to={`/projects/${project.slug || project.id}`}
+          aria-label={`View ${project.title}`}
+          className="absolute top-3 right-3 z-20 grid place-items-center w-12 h-12 rounded-full bg-navy-900 border-[3px] border-accent text-white text-2xl opacity-0 group-hover:opacity-100 transition-all duration-300 hover:shadow-[0_0_24px_#8b73e6]"
+        >
+          <FiArrowUpRight />
+        </RouterLink>
         {project.image ? (
           <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
         ) : (
@@ -221,6 +243,14 @@ export default function Projects() {
               />
             </button>
           ))}
+        </div>
+
+        {/* View all → dedicated projects page */}
+        <div className="flex justify-center mt-10">
+          <RouterLink to="/projects" className="btn group/all">
+            View all projects
+            <FiArrowUpRight className="transition-transform group-hover/all:translate-x-1 group-hover/all:-translate-y-1" />
+          </RouterLink>
         </div>
       </div>
     </section>

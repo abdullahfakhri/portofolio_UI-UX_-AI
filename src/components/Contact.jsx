@@ -1,7 +1,10 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { Link as RouterLink } from 'react-router-dom';
 import { FiCopy, FiCheck, FiArrowUpRight } from 'react-icons/fi';
 import { personalInfo } from '../data/portfolioData';
+
+const MotionRouterLink = motion(RouterLink);
 
 const contactInfo = [
   { label: 'Email', value: personalInfo.email },
@@ -86,19 +89,30 @@ export default function Contact() {
           <div className="text-center md:text-left">
             <h3 className="text-accent text-base mb-4">Social Media</h3>
             <div className="flex flex-col items-center md:items-start gap-2">
-              {socialLinks.map((s) => (
-                <motion.a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ x: 6 }}
-                  className="inline-flex items-center gap-2 text-white hover:text-accent font-medium transition-colors"
-                >
-                  {s.label}
-                  <FiArrowUpRight size={18} />
-                </motion.a>
-              ))}
+              {socialLinks.map((s) => {
+                const className =
+                  'inline-flex items-center gap-2 text-white hover:text-accent font-medium transition-colors';
+
+                // Internal routes (e.g. Dribbble → /coming-soon) use the router.
+                return s.href.startsWith('/') ? (
+                  <MotionRouterLink key={s.label} to={s.href} whileHover={{ x: 6 }} className={className}>
+                    {s.label}
+                    <FiArrowUpRight size={18} />
+                  </MotionRouterLink>
+                ) : (
+                  <motion.a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ x: 6 }}
+                    className={className}
+                  >
+                    {s.label}
+                    <FiArrowUpRight size={18} />
+                  </motion.a>
+                );
+              })}
             </div>
           </div>
 

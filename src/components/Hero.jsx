@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { Link } from 'react-scroll';
+import { Link as RouterLink } from 'react-router-dom';
 import { FiGithub, FiLinkedin, FiInstagram, FiFileText } from 'react-icons/fi';
 import { SiDribbble } from 'react-icons/si';
 import { personalInfo } from '../data/portfolioData';
+
+const MotionRouterLink = motion(RouterLink);
 
 const socialLinks = [
   { icon: <FiLinkedin size={20} />, href: personalInfo.social.linkedin, label: 'LinkedIn' },
@@ -95,40 +98,37 @@ export default function Hero() {
             transition={{ delay: 0.7 }}
             className="flex flex-col items-start gap-5 mt-24"
           >
-            {socialLinks.map((s, i) => (
-              <motion.a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={s.label}
-                initial={{ opacity: 0, x: -16 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.75 + i * 0.08 }}
-                whileHover={{ x: 6 }}
-                className="text-gray-500 hover:text-accent transition-colors"
-              >
-                {s.icon}
-              </motion.a>
-            ))}
+            {socialLinks.map((s, i) => {
+              const anim = {
+                initial: { opacity: 0, x: -16 },
+                animate: { opacity: 1, x: 0 },
+                transition: { delay: 0.75 + i * 0.08 },
+                whileHover: { x: 6 },
+              };
+              const className = 'text-gray-500 hover:text-accent transition-colors';
+
+              // Internal routes (e.g. Dribbble → /coming-soon) use the router.
+              return s.href.startsWith('/') ? (
+                <MotionRouterLink key={s.label} to={s.href} aria-label={s.label} className={className} {...anim}>
+                  {s.icon}
+                </MotionRouterLink>
+              ) : (
+                <motion.a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className={className}
+                  {...anim}
+                >
+                  {s.icon}
+                </motion.a>
+              );
+            })}
             <div className="w-px h-10 bg-gradient-to-b from-gray-700 to-transparent mt-1" />
           </motion.div>
         </div>
-
-        {/* SVG filter: removes near-white pixels by dropping their alpha */}
-        <svg style={{ display: 'none' }}>
-          <defs>
-            <filter id="remove-white-bg" x="0%" y="0%" width="100%" height="100%" colorInterpolationFilters="sRGB">
-              <feColorMatrix
-                type="matrix"
-                values="1 0 0 0 0
-                        0 1 0 0 0
-                        0 0 1 0 0
-                       -2 -2 -2 6 0"
-              />
-            </filter>
-          </defs>
-        </svg>
 
         {/* ── CENTER — full-height photo ── */}
         <motion.div
@@ -146,7 +146,7 @@ export default function Hero() {
               height: '85vh',
               objectFit: 'cover',
               objectPosition: 'top center',
-              filter: 'url(#remove-white-bg) drop-shadow(0 0 40px rgba(139,115,230,0.30))',
+              filter: 'drop-shadow(0 0 40px rgba(139,115,230,0.30))',
             }}
             draggable={false}
             onError={(e) => {

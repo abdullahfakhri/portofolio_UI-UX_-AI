@@ -1,8 +1,21 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-scroll';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { scroller } from 'react-scroll';
 import { FiArrowUp } from 'react-icons/fi';
 
 export default function Footer() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const backToTop = () => {
+    if (location.pathname === '/') {
+      scroller.scrollTo('home', { smooth: true, duration: 800 });
+    } else {
+      navigate('/');
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }
+  };
+
   return (
     <footer className="relative bg-navy-950 border-t border-white/5 py-16 overflow-hidden text-center">
       {/* Rotating accent blob (reference footer) */}
@@ -18,16 +31,15 @@ export default function Footer() {
           &copy; {new Date().getFullYear()}
         </p>
 
-        <Link to="home" smooth duration={800}>
-          <motion.button
-            whileHover={{ y: -3 }}
-            whileTap={{ scale: 0.9 }}
-            className="mt-4 w-11 h-11 rounded-full grid place-items-center bg-navy-900 border-[3px] border-accent text-white hover:shadow-[0_0_24px_#8b73e6] transition-shadow"
-            aria-label="Back to top"
-          >
-            <FiArrowUp size={18} />
-          </motion.button>
-        </Link>
+        <motion.button
+          onClick={backToTop}
+          whileHover={{ y: -3 }}
+          whileTap={{ scale: 0.9 }}
+          className="mt-4 w-11 h-11 rounded-full grid place-items-center bg-navy-900 border-[3px] border-accent text-white hover:shadow-[0_0_24px_#8b73e6] transition-shadow"
+          aria-label="Back to top"
+        >
+          <FiArrowUp size={18} />
+        </motion.button>
       </div>
     </footer>
   );

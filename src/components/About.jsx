@@ -2,13 +2,6 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { FiDownload } from 'react-icons/fi';
 
-const stats = [
-  { label: 'Projects Completed', value: '20+' },
-  { label: 'Design Systems', value: '8+' },
-  { label: 'Technologies', value: '15+' },
-  { label: 'Years Learning', value: '3+' },
-];
-
 export default function About() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
@@ -80,8 +73,9 @@ export default function About() {
             </p>
 
             <motion.a
-              href="/assets/docs/Abdullah_Fakhri_CV.pdf"
-              download
+              href="https://drive.google.com/file/d/1xsSGTF6-uJUv9rClZzUzeXtzcLRzrLWB/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.97 }}
               className="btn self-start"
@@ -91,27 +85,6 @@ export default function About() {
             </motion.a>
           </motion.div>
         </div>
-
-        {/* ── Stats row ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.5 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-24 mb-20"
-        >
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.5 + i * 0.1 }}
-              className="glass-card p-6 text-center hover:border-accent/30 transition-colors"
-            >
-              <div className="text-3xl lg:text-4xl font-black gradient-text mb-1">{stat.value}</div>
-              <div className="text-gray-400 text-sm">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
 
       </div>
     </section>
