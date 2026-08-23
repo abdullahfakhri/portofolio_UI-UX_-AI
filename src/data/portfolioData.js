@@ -4,6 +4,7 @@ export const personalInfo = {
   roles: [
     "UI/UX Designer",
     "Product Designer",
+    "Product Manager",
     "Front End Developer",
     "AI Design Engineer",
   ],
