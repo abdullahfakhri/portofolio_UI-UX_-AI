@@ -11,21 +11,26 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-navy-900 text-gray-300 font-sans;
     overflow-x: hidden;
-    cursor: none;
+  }
+
+  /* The custom cursor only exists on real pointer devices — keep the native
+     cursor on touch screens so taps still show normal affordances. */
+  @media (hover: hover) and (pointer: fine) {
+    body,
+    a, button, [role="button"], input, textarea, select, label {
+      cursor: none;
+    }
   }
 
   /* Reference uses the Unbounded display face for every heading */
   h1, h2, h3, h4 {
     @apply font-display text-white font-semibold;
-  }
-
-  a, button, [role="button"], input, textarea, select, label {
-    cursor: none;
   }
 
   ::-webkit-scrollbar {
@@ -44,19 +49,19 @@
 
 @layer components {
   .section-container {
-    @apply max-w-6xl mx-auto px-6 py-20;
+    @apply max-w-6xl mx-auto px-5 sm:px-6 py-14 sm:py-20;
   }
 
   /* Centered display title — accent the highlighted word with a <span> */
   .section-title {
-    @apply font-display text-3xl md:text-4xl font-semibold text-center mb-4 text-white leading-tight;
+    @apply font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-center mb-4 text-white leading-tight;
   }
   .section-title span {
     @apply text-accent;
   }
 
   .section-subtitle {
-    @apply text-gray-400 text-center mb-16 text-lg;
+    @apply text-gray-400 text-center mb-10 sm:mb-16 text-base sm:text-lg;
   }
 
   .gradient-text {
@@ -74,7 +79,7 @@
 
   /* Pill button: dark fill, accent border, outer + inset glow */
   .btn {
-    @apply inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-display font-semibold text-white bg-navy-900;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 sm:px-7 sm:py-3.5 text-sm sm:text-base font-display font-semibold text-white bg-navy-900;
     border: 3px solid theme('colors.accent.DEFAULT');
     box-shadow:
       0 8px 32px rgba(139, 115, 230, 0.45),
@@ -89,7 +94,7 @@
 
   /* Ghost pill (secondary) */
   .btn-ghost {
-    @apply inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-display font-semibold text-white bg-white/5 border border-white/15 backdrop-blur-sm transition-all duration-300;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 sm:px-7 sm:py-3.5 text-sm sm:text-base font-display font-semibold text-white bg-white/5 border border-white/15 backdrop-blur-sm transition-all duration-300;
   }
   .btn-ghost:hover {
     @apply bg-white/10 border-accent/50;
@@ -97,7 +102,7 @@
 
   /* Legacy aliases kept so existing markup still styles correctly */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-8 py-3 font-display font-semibold text-white bg-navy-900;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 sm:px-8 py-3 text-sm sm:text-base font-display font-semibold text-white bg-navy-900;
     border: 3px solid theme('colors.accent.DEFAULT');
     box-shadow:
       0 8px 32px rgba(139, 115, 230, 0.45),

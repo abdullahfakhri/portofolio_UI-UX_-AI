@@ -40,22 +40,22 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative bg-navy-900 py-24 overflow-hidden">
+    <section id="contact" className="relative bg-navy-900 py-16 sm:py-24 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
 
       {/* Background glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-sm h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="section-container" ref={ref}>
         {/* Heading + copy email */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-20"
         >
           <span className="text-accent text-sm font-display font-semibold tracking-widest uppercase">Get In Touch</span>
           <h2 className="section-title mt-2 mb-4">Contact <span>Me</span></h2>
-          <p className="text-gray-300 font-display text-lg mb-8">Tell me about your next project.</p>
+          <p className="text-gray-300 font-display text-base sm:text-lg mb-8 px-2">Tell me about your next project.</p>
 
           <motion.button
             onClick={copyEmail}
@@ -73,14 +73,14 @@ export default function Contact() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.2 }}
-          className="grid md:grid-cols-3 gap-12 max-w-4xl mx-auto"
+          className="grid md:grid-cols-3 gap-10 sm:gap-12 max-w-4xl mx-auto"
         >
           {/* Email + Location */}
           <div className="text-center md:text-left space-y-6">
             {contactInfo.map((item) => (
               <div key={item.label}>
                 <h3 className="text-accent text-base mb-1">{item.label}</h3>
-                <p className="text-white font-sans">{item.value}</p>
+                <p className="text-white font-sans break-words">{item.value}</p>
               </div>
             ))}
           </div>

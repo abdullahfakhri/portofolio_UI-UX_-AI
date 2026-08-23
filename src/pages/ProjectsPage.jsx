@@ -18,7 +18,7 @@ function ProjectRow({ project, index }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.6 }}
-        className="grid md:grid-cols-2 gap-10 md:gap-16 items-center py-14 border-b border-white/[0.06] last:border-0"
+        className="grid md:grid-cols-2 gap-8 md:gap-16 items-center py-10 sm:py-14 border-b border-white/[0.06] last:border-0"
       >
         <div
           className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/[0.06] grid place-items-center"
@@ -34,11 +34,11 @@ function ProjectRow({ project, index }) {
         </div>
         <div className="flex flex-col">
           <div className="flex items-center gap-4 mb-4">
-            <span className="font-display font-black leading-none gradient-text" style={{ fontSize: '3rem' }}>
+            <span className="font-display font-black leading-none gradient-text" style={{ fontSize: 'clamp(2.25rem, 9vw, 3rem)' }}>
               {num}
             </span>
             <span className="h-px flex-1 bg-white/10" />
-            <span className="font-display text-gray-400 text-sm tracking-wide uppercase">{project.category}</span>
+            <span className="font-display text-gray-400 text-xs sm:text-sm tracking-wide uppercase">{project.category}</span>
           </div>
           <h3 className="font-display font-bold text-white leading-tight mb-4" style={{ fontSize: 'clamp(1.6rem, 3vw, 2.5rem)' }}>
             {project.title}
@@ -92,11 +92,11 @@ function ProjectRow({ project, index }) {
   const Content = (
     <div className="flex flex-col">
       <div className="flex items-center gap-4 mb-4">
-        <span className="font-display font-black leading-none gradient-text" style={{ fontSize: '3rem' }}>
+        <span className="font-display font-black leading-none gradient-text" style={{ fontSize: 'clamp(2.25rem, 9vw, 3rem)' }}>
           {num}
         </span>
         <span className="h-px flex-1 bg-white/10" />
-        <span className="font-display text-gray-400 text-sm tracking-wide uppercase">
+        <span className="font-display text-gray-400 text-xs sm:text-sm tracking-wide uppercase">
           {project.category} · {project.year}
         </span>
       </div>
@@ -131,7 +131,7 @@ function ProjectRow({ project, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.6 }}
-      className="grid md:grid-cols-2 gap-10 md:gap-16 items-center py-14 border-b border-white/[0.06] last:border-0"
+      className="grid md:grid-cols-2 gap-8 md:gap-16 items-center py-10 sm:py-14 border-b border-white/[0.06] last:border-0"
     >
       <div className={reversed ? 'md:order-2' : ''}>{Visual}</div>
       <div className={reversed ? 'md:order-1' : ''}>{Content}</div>
@@ -148,14 +148,14 @@ export default function ProjectsPage() {
     <main className="relative bg-navy-900 overflow-hidden">
       {/* Top glow */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[460px] pointer-events-none opacity-60"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[700px] h-[460px] pointer-events-none opacity-60"
         style={{
           background: 'radial-gradient(ellipse at center, rgba(139,115,230,0.20) 0%, transparent 70%)',
           filter: 'blur(50px)',
         }}
       />
 
-      <div className="relative max-w-6xl mx-auto px-6 pt-36 pb-24">
+      <div className="relative max-w-6xl mx-auto px-5 sm:px-6 pt-28 sm:pt-36 pb-16 sm:pb-24">
         {/* Back link */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -184,7 +184,7 @@ export default function ProjectsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-black leading-[1.05]"
-            style={{ fontSize: 'clamp(2.4rem, 6vw, 4.5rem)' }}
+            style={{ fontSize: 'clamp(2rem, 8vw, 4.5rem)' }}
           >
             Work that moves
             <br />
@@ -194,7 +194,7 @@ export default function ProjectsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-gray-400 text-lg mt-6 max-w-2xl"
+            className="text-gray-400 text-base sm:text-lg mt-5 sm:mt-6 max-w-2xl"
           >
             A selection of projects where thoughtful design meets clean, performant
             code — from design systems and research to shipped web and mobile products.

@@ -12,7 +12,7 @@ function ServiceCard({ service, index, inView }) {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ y: -8 }}
-      className="surface-card p-8 group h-full flex flex-col"
+      className="surface-card p-6 sm:p-8 group h-full flex flex-col"
     >
       {/* Accent glow blob, tinted per service */}
       <div
@@ -30,7 +30,7 @@ function ServiceCard({ service, index, inView }) {
       <div className="relative z-10 flex items-start justify-between mb-6">
         <span
           className="font-display font-black leading-none"
-          style={{ fontSize: '2.75rem', color: service.color }}
+          style={{ fontSize: 'clamp(2.25rem, 9vw, 2.75rem)', color: service.color }}
         >
           {num}
         </span>
@@ -40,7 +40,7 @@ function ServiceCard({ service, index, inView }) {
       </div>
 
       {/* Title */}
-      <h3 className="relative z-10 font-display font-bold text-2xl mb-3 text-white group-hover:text-accent transition-colors">
+      <h3 className="relative z-10 font-display font-bold text-xl sm:text-2xl mb-3 text-white group-hover:text-accent transition-colors">
         {service.title}
       </h3>
 
@@ -66,10 +66,10 @@ export default function Services() {
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="services" className="relative bg-navy-900 py-24 overflow-hidden">
+    <section id="services" className="relative bg-navy-900 py-16 sm:py-24 overflow-hidden">
       {/* Decorative top glow */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] pointer-events-none opacity-50"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[400px] pointer-events-none opacity-50"
         style={{
           background: 'radial-gradient(ellipse at center, rgba(139,115,230,0.18) 0%, transparent 70%)',
           filter: 'blur(40px)',

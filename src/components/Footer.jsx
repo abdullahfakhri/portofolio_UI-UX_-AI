@@ -17,11 +17,11 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-navy-950 border-t border-white/5 py-16 overflow-hidden text-center">
+    <footer className="relative bg-navy-950 border-t border-white/5 py-12 sm:py-16 overflow-hidden text-center">
       {/* Rotating accent blob (reference footer) */}
       <div className="blob-animate" style={{ right: '-3rem', bottom: '-3rem' }} />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 flex flex-col items-center gap-3">
+      <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-6 flex flex-col items-center gap-3">
         <p className="text-white">
           All Rights Reserved By{' '}
           <span className="text-accent font-display">Abdullah Fakhri</span>

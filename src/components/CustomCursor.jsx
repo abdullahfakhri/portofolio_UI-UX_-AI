@@ -1,6 +1,25 @@
 import { useEffect, useRef, useState } from 'react';
 
+// Touch screens have no pointer to follow — the blob would just sit in a corner.
+const FINE_POINTER = '(hover: hover) and (pointer: fine)';
+
 export default function CustomCursor() {
+  const [finePointer, setFinePointer] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia(FINE_POINTER).matches
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia(FINE_POINTER);
+    const onChange = (e) => setFinePointer(e.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  if (!finePointer) return null;
+  return <Cursor />;
+}
+
+function Cursor() {
   const dotRef = useRef(null);
   const ringRef = useRef(null);
   const pos = useRef({ x: -100, y: -100 });

@@ -10,14 +10,14 @@ export default function ComingSoon() {
     <main className="relative bg-navy-900 overflow-hidden min-h-screen">
       {/* Top glow */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[460px] pointer-events-none opacity-60"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[700px] h-[460px] pointer-events-none opacity-60"
         style={{
           background: 'radial-gradient(ellipse at center, rgba(139,115,230,0.20) 0%, transparent 70%)',
           filter: 'blur(50px)',
         }}
       />
 
-      <div className="relative max-w-3xl mx-auto px-6 pt-36 pb-24 min-h-screen flex flex-col">
+      <div className="relative max-w-3xl mx-auto px-5 sm:px-6 pt-28 sm:pt-36 pb-16 sm:pb-24 min-h-screen flex flex-col">
         {/* Back link */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -54,7 +54,7 @@ export default function ComingSoon() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
             className="font-black leading-[1.05] mt-4"
-            style={{ fontSize: 'clamp(2.4rem, 6vw, 4rem)' }}
+            style={{ fontSize: 'clamp(2rem, 9vw, 4rem)' }}
           >
             <span className="gradient-text">Coming Soon</span>
           </motion.h1>
@@ -63,7 +63,7 @@ export default function ComingSoon() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-gray-400 text-lg mt-5 max-w-md"
+            className="text-gray-400 text-base sm:text-lg mt-5 max-w-md"
           >
             My Dribbble portfolio is still in the works. Fresh shots and design
             explorations will land here soon — stay tuned ✨

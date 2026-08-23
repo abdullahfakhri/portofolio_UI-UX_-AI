@@ -69,14 +69,14 @@ export default function ProjectDetail() {
     <main className="relative bg-navy-900 overflow-hidden">
       {/* Top glow */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[460px] pointer-events-none opacity-60"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[700px] h-[460px] pointer-events-none opacity-60"
         style={{
           background: 'radial-gradient(ellipse at center, rgba(139,115,230,0.20) 0%, transparent 70%)',
           filter: 'blur(50px)',
         }}
       />
 
-      <div className="relative max-w-5xl mx-auto px-6 pt-36 pb-24">
+      <div className="relative max-w-5xl mx-auto px-5 sm:px-6 pt-28 sm:pt-36 pb-16 sm:pb-24">
         {/* Back link */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -100,10 +100,10 @@ export default function ProjectDetail() {
             transition={{ duration: 0.6 }}
             className="flex items-center gap-3 mb-5"
           >
-            <span className="font-display font-black leading-none gradient-text" style={{ fontSize: '2.25rem' }}>
+            <span className="font-display font-black leading-none gradient-text" style={{ fontSize: 'clamp(1.9rem, 8vw, 2.25rem)' }}>
               {num}
             </span>
-            <span className="font-display text-gray-400 text-sm tracking-wide uppercase">
+            <span className="font-display text-gray-400 text-xs sm:text-sm tracking-wide uppercase">
               {project.category} · {project.year}
             </span>
           </motion.div>
@@ -113,7 +113,7 @@ export default function ProjectDetail() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-black leading-[1.05]"
-            style={{ fontSize: 'clamp(2.2rem, 5.5vw, 4rem)' }}
+            style={{ fontSize: 'clamp(1.9rem, 7.5vw, 4rem)' }}
           >
             Designing with purpose:
             <br />
@@ -124,7 +124,7 @@ export default function ProjectDetail() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="text-gray-400 text-lg mt-6 max-w-2xl leading-relaxed"
+            className="text-gray-400 text-base sm:text-lg mt-5 sm:mt-6 max-w-2xl leading-relaxed"
           >
             {project.overview || project.description}
           </motion.p>
@@ -146,13 +146,13 @@ export default function ProjectDetail() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-14 py-10 border-y border-white/[0.06]"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mt-10 sm:mt-14 py-8 sm:py-10 border-y border-white/[0.06]"
         >
           <MetaItem label="Role" value={project.role} />
           <MetaItem label="Category" value={project.category} />
           <MetaItem label="Timeline" value={project.timeline} />
           <MetaItem label="Year" value={project.year} />
-          <div className="sm:col-span-2 lg:col-span-4">
+          <div className="col-span-2 lg:col-span-4">
             <p className="font-display text-xs uppercase tracking-wide text-gray-500 mb-2">Techstack</p>
             <div className="flex flex-wrap gap-2">
               {tags.map((tag) => (
@@ -165,7 +165,7 @@ export default function ProjectDetail() {
         </motion.div>
 
         {/* Narrative sections */}
-        <div className="mt-16 space-y-16">
+        <div className="mt-12 sm:mt-16 space-y-12 sm:space-y-16">
           {sections.map((s, i) => (
             <motion.section
               key={s.title}
@@ -183,7 +183,7 @@ export default function ProjectDetail() {
                     {s.title}
                   </h2>
                 </div>
-                <p className="text-gray-400 text-lg leading-relaxed pl-0 md:pl-9">{s.body}</p>
+                <p className="text-gray-400 text-base sm:text-lg leading-relaxed pl-0 md:pl-9">{s.body}</p>
               </div>
 
               {/* Full-width case-study images */}
@@ -219,22 +219,22 @@ export default function ProjectDetail() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="mt-24 pt-10 border-t border-white/[0.06]"
+          className="mt-16 sm:mt-24 pt-10 border-t border-white/[0.06]"
         >
           <p className="font-display text-xs uppercase tracking-wide text-gray-500 mb-4">Next project</p>
           <RouterLink
             to={`/projects/${nextProject.slug || nextProject.id}`}
-            className="group flex items-center justify-between gap-6"
+            className="group flex items-center justify-between gap-4 sm:gap-6"
           >
             <div>
-              <h3 className="font-display font-bold text-white text-2xl group-hover:text-accent transition-colors">
+              <h3 className="font-display font-bold text-white text-xl sm:text-2xl group-hover:text-accent transition-colors">
                 {nextProject.title}
               </h3>
               <p className="text-gray-400 text-sm mt-1">
                 {nextProject.category} · {nextProject.year}
               </p>
             </div>
-            <span className="grid place-items-center w-14 h-14 flex-shrink-0 rounded-full bg-navy-900 border-[3px] border-accent text-white text-2xl transition-all duration-300 group-hover:shadow-[0_0_24px_#8b73e6]">
+            <span className="grid place-items-center w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 rounded-full bg-navy-900 border-[3px] border-accent text-white text-2xl transition-all duration-300 group-hover:shadow-[0_0_24px_#8b73e6]">
               <FiArrowRight />
             </span>
           </RouterLink>

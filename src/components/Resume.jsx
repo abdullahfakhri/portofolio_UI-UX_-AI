@@ -31,11 +31,11 @@ function ExperienceItem({ item, index }) {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, delay: index * 0.1 }}
-      className="relative pl-12 md:pl-20 pb-12 last:pb-0"
+      className="relative pl-10 sm:pl-12 md:pl-20 pb-10 sm:pb-12 last:pb-0"
     >
       <span className="absolute left-[18px] md:left-[30px] top-2 -translate-x-1/2 w-4 h-4 rounded-full bg-navy-900 border-[3px] border-accent shadow-[0_0_16px_#8b73e6] z-10" />
 
-      <div className="surface-card p-6 md:p-7 group hover:border-accent/30 transition-colors">
+      <div className="surface-card p-5 md:p-7 group hover:border-accent/30 transition-colors">
         <div className="blob" style={{ right: '-7rem', top: '-6rem', width: '220px', height: '220px' }} />
 
         <div className="relative z-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
@@ -85,17 +85,17 @@ function ExperiencePanel() {
 /* ---------------- Education panel ---------------- */
 function EducationPanel() {
   return (
-    <div className="grid lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
+    <div className="grid lg:grid-cols-2 gap-12 lg:gap-10 max-w-5xl mx-auto">
       {/* Education timeline */}
       <div>
-        <h3 className="text-xl font-bold mb-8 flex items-center gap-3">
+        <h3 className="text-lg sm:text-xl font-bold mb-6 sm:mb-8 flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
             <FiBook size={18} />
           </div>
           Education
         </h3>
 
-        <div className="relative pl-6 border-l-[3px] border-accent/30">
+        <div className="relative pl-7 border-l-[3px] border-accent/30">
           {education.map((edu, i) => (
             <motion.div
               key={`${edu.institution}-${edu.period}`}
@@ -104,8 +104,8 @@ function EducationPanel() {
               transition={{ delay: 0.1 + i * 0.1 }}
               className="relative mb-8 last:mb-0"
             >
-              <div className="absolute -left-8 top-1 w-4 h-4 rounded-full bg-gradient-to-br from-accent to-accent-purple border-2 border-navy-950 shadow-[0_0_12px_#8b73e6]" />
-              <div className="glass-card p-6 hover:border-accent/30 transition-colors">
+              <div className="absolute -left-[30px] top-1 w-4 h-4 rounded-full bg-gradient-to-br from-accent to-accent-purple border-2 border-navy-950 shadow-[0_0_12px_#8b73e6]" />
+              <div className="glass-card p-5 sm:p-6 hover:border-accent/30 transition-colors">
                 <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                   <div>
                     <h4 className="font-bold text-lg">{edu.degree}</h4>
@@ -131,7 +131,7 @@ function EducationPanel() {
 
       {/* Certifications */}
       <div>
-        <h3 className="text-xl font-bold mb-8 flex items-center gap-3">
+        <h3 className="text-lg sm:text-xl font-bold mb-6 sm:mb-8 flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-accent-purple/10 border border-accent-purple/20 flex items-center justify-center text-accent-purple">
             <FiAward size={18} />
           </div>
@@ -146,7 +146,7 @@ function EducationPanel() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1 + i * 0.1 }}
               whileHover={{ x: 4 }}
-              className="glass-card p-5 flex items-center gap-4 hover:border-accent-purple/30 transition-all group"
+              className="glass-card p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:border-accent-purple/30 transition-all group"
             >
               <div
                 className="w-12 h-12 rounded-xl flex items-center justify-center text-white flex-shrink-0"
@@ -176,7 +176,7 @@ export default function Resume() {
   const { tab, setTab } = useResumeTab();
 
   return (
-    <section id="experience" className="relative bg-navy-950 py-20">
+    <section id="experience" className="relative bg-navy-950 py-14 sm:py-20">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-blue/30 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-purple/30 to-transparent" />
 
@@ -203,7 +203,7 @@ export default function Resume() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.15 }}
-          className="flex justify-center mb-12"
+          className="flex justify-center mb-10 sm:mb-12"
         >
           <div className="inline-flex gap-1 p-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
             {tabs.map((t) => (

@@ -10,12 +10,12 @@ function ProjectCard({ project }) {
   // Special "Coming Soon" card — shows a Lottie animation instead of a project.
   if (project.comingSoon) {
     return (
-      <div className="surface-card p-7 group h-full flex flex-col">
+      <div className="surface-card p-5 sm:p-7 group h-full flex flex-col">
         <div className="relative z-10 flex items-center justify-between mb-6">
-          <span className="font-display font-black leading-none text-white" style={{ fontSize: '2.5rem' }}>
+          <span className="font-display font-black leading-none text-white" style={{ fontSize: 'clamp(2rem, 8vw, 2.5rem)' }}>
             {num}
           </span>
-          <span className="font-display text-gray-300 text-base">{project.category}</span>
+          <span className="font-display text-gray-300 text-sm sm:text-base">{project.category}</span>
         </div>
         <h3 className="relative z-10 font-display font-bold text-xl mb-4 text-white">{project.title}</h3>
         <div className="relative z-10 mb-6">
@@ -35,7 +35,7 @@ function ProjectCard({ project }) {
   }
 
   return (
-    <div className="surface-card p-7 group h-full flex flex-col">
+    <div className="surface-card p-5 sm:p-7 group h-full flex flex-col">
       {/* Accent glow blob inside the card (reference projects__card .blob) */}
       {!project.image && (
         <div className="blob" style={{ right: '-7rem', bottom: '-6rem', width: '260px', height: '260px' }} />
@@ -45,11 +45,11 @@ function ProjectCard({ project }) {
       <div className="relative z-10 flex items-center justify-between mb-6">
         <span
           className="font-display font-black leading-none text-white"
-          style={{ fontSize: '2.5rem' }}
+          style={{ fontSize: 'clamp(2rem, 8vw, 2.5rem)' }}
         >
           {num}
         </span>
-        <span className="font-display text-gray-300 text-base">
+        <span className="font-display text-gray-300 text-sm sm:text-base">
           {project.category}
         </span>
       </div>
@@ -115,14 +115,23 @@ export default function Projects() {
   const [isPaused, setIsPaused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // Card pitch = card width + the flex gap, measured from the DOM so it stays
+  // correct across the responsive card width / gap changes.
+  const cardPitch = () => {
+    const el = scrollRef.current;
+    const first = el?.children[0];
+    if (!first) return 400;
+    const second = el.children[1];
+    return second ? second.offsetLeft - first.offsetLeft : first.offsetWidth;
+  };
+
   // Track active card based on scroll position
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
 
     const onScroll = () => {
-      const cardWidth = el.firstChild?.offsetWidth + 24 || 400;
-      const idx = Math.round(el.scrollLeft / cardWidth);
+      const idx = Math.round(el.scrollLeft / cardPitch());
       setActiveIndex(Math.min(idx, projects.length - 1));
     };
 
@@ -133,8 +142,7 @@ export default function Projects() {
   const scrollToIndex = (idx) => {
     const el = scrollRef.current;
     if (!el) return;
-    const cardWidth = el.firstChild?.offsetWidth + 24 || 400;
-    el.scrollTo({ left: cardWidth * idx, behavior: 'smooth' });
+    el.scrollTo({ left: cardPitch() * idx, behavior: 'smooth' });
   };
 
   // Auto-scroll every 10 seconds
@@ -143,12 +151,9 @@ export default function Projects() {
 
     const interval = setInterval(() => {
       const el = scrollRef.current;
-      if (!el) return;
+      if (!el || !el.children.length) return;
 
-      const firstCard = el.firstChild;
-      if (!firstCard) return;
-
-      const cardWidth = firstCard.offsetWidth + 24; // gap
+      const cardWidth = cardPitch();
       const maxScroll = el.scrollWidth - el.clientWidth;
 
       // If near the end, reset to start; else advance
@@ -163,10 +168,10 @@ export default function Projects() {
   }, [isPaused]);
 
   return (
-    <section id="projects" className="relative bg-navy-900 py-24 overflow-hidden">
+    <section id="projects" className="relative bg-navy-900 py-16 sm:py-24 overflow-hidden">
       {/* Decorative blue glow */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] pointer-events-none opacity-50"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[400px] pointer-events-none opacity-50"
         style={{
           background: 'radial-gradient(ellipse at center, rgba(139,115,230,0.18) 0%, transparent 70%)',
           filter: 'blur(40px)',
@@ -175,13 +180,13 @@ export default function Projects() {
 
       <div className="relative max-w-7xl mx-auto" ref={ref}>
         {/* Header */}
-        <div className="text-center mb-16 relative px-10">
+        <div className="text-center mb-10 sm:mb-16 relative px-5 sm:px-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-black leading-tight" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}>
+            <h2 className="font-black leading-tight" style={{ fontSize: 'clamp(1.75rem, 7vw, 3.5rem)' }}>
               I make Incredible
               <br />
               <span className="gradient-text">Projects</span>
@@ -206,7 +211,7 @@ export default function Projects() {
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={() => setIsPaused(true)}
           onTouchEnd={() => setTimeout(() => setIsPaused(false), 3000)}
-          className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 px-10 hide-scrollbar"
+          className="flex gap-5 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-6 px-5 sm:px-10 hide-scrollbar"
           style={{ scrollBehavior: 'smooth' }}
         >
           {projects.map((p, i) => (
@@ -216,13 +221,13 @@ export default function Projects() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.1 * i }}
               whileHover={{ y: -8 }}
-              className="flex-shrink-0 w-[380px] snap-start"
+              className="flex-shrink-0 w-[min(84vw,380px)] snap-start"
             >
               <ProjectCard project={p} />
             </motion.div>
           ))}
           {/* Spacer for trailing gap */}
-          <div className="flex-shrink-0 w-10" />
+          <div className="flex-shrink-0 w-1 sm:w-10" />
         </motion.div>
 
         {/* Dot indicators */}

@@ -7,11 +7,11 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="about" className="relative bg-navy-900 pt-48 pb-20 overflow-hidden" style={{ marginTop: '-2px' }}>
-      <div className="relative max-w-7xl mx-auto px-10" ref={ref}>
+    <section id="about" className="relative bg-navy-900 pt-24 sm:pt-32 lg:pt-48 pb-16 sm:pb-20 overflow-hidden" style={{ marginTop: '-2px' }}>
+      <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-10" ref={ref}>
 
         {/* ── Two-column hero intro ── */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[520px]">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center lg:min-h-[520px]">
 
           {/* ── LEFT — photo with glow ── */}
           <motion.div
@@ -26,17 +26,17 @@ export default function About() {
 
             {/* Soft purple radial glow */}
             <div
-              className="absolute inset-0 m-auto pointer-events-none"
+              className="absolute inset-0 m-auto pointer-events-none w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] lg:w-[420px] lg:h-[420px]"
               style={{
-                width: '420px',
-                height: '420px',
                 background: 'radial-gradient(circle at center, rgba(139,115,230,0.32) 0%, rgba(111,79,222,0.14) 45%, transparent 70%)',
                 filter: 'blur(20px)',
               }}
             />
 
             {/* Photo container */}
-            <div className="relative" style={{ width: 'clamp(280px, 32vw, 420px)', height: '520px' }}>
+            <div
+              className="relative w-[min(70vw,280px)] lg:w-[clamp(280px,32vw,420px)] h-[min(56svh,340px)] lg:h-[520px]"
+            >
               <img
                 src="/assets/img/Photo Profile.png"
                 alt="Abdullah Hasan Mufid Fakhri"
@@ -63,12 +63,12 @@ export default function About() {
               About Me
             </span>
 
-            <h2 className="font-black leading-[1.05] mb-6" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.2rem)' }}>
+            <h2 className="font-black leading-[1.05] mb-6" style={{ fontSize: 'clamp(2rem, 9vw, 4.2rem)' }}>
               <span className="gradient-text block">Crafting</span>
               <span className="text-white block">Experiences</span>
             </h2>
 
-            <p className="text-gray-400 text-base lg:text-lg leading-relaxed mb-8 max-w-lg">
+            <p className="text-gray-400 text-sm sm:text-base lg:text-lg leading-relaxed mb-8 max-w-lg">
               I'm a <span className="text-white font-semibold">UI/UX Designer</span>, <span className="text-white font-semibold">Product Designer</span> & <span className="text-white font-semibold">Front End Developer</span> passionate about crafting meaningful digital experiences. Driven by curiosity and design thinking, I explore the intersection of <span className="text-accent font-semibold">design and AI</span> to build products that feel intuitive and delightful.
             </p>
 

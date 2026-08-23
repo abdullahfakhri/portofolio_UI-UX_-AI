@@ -287,15 +287,20 @@ export const projects = [
 
 export const experience = [
   {
-    role: "UI/UX Designer Intern",
+    role: "UI/UX Designer & Product Manager Intern",
     company: "WIZ",
     location: "Jakarta, Indonesia",
     period: "Apr 2026 – Present",
     current: true,
     points: [
-      "Design UI predominantly for mobile web pages — from wireframing to high-fidelity design across various industries.",
-      "Collaborate with other divisions including Developers, Project Managers, and the Graphic Design team to deliver working designs.",
-      "Perform quality control once a developed web page has gone live.",
+      "Own end-to-end delivery of digital products, from requirement gathering and scoping to release, managing timelines and dependencies across the design, engineering, and content production teams.",
+      "Translate business objectives into product requirements and a prioritized backlog, defining user stories, acceptance criteria, and success metrics (conversion rate, ROAS, revenue) for each release.",
+      "Lead cross-functional coordination between the UI/UX, Tech, creative, and marketing teams, tracking progress and resolving blockers to keep product and campaign launches on schedule.",
+      "Design mobile-first web interfaces from wireframe to high-fidelity prototype, then perform design QA on live pages to ensure the implementation matches the specification.",
+      "Drive data-informed iteration through A/B testing on landing pages, funnels, and creatives, translating results into prioritized product and UX improvements.",
+      "Plan, execute, and optimize paid acquisition campaigns on Meta Ads with full ownership of budget allocation, audience targeting, and full-funnel performance toward conversion targets.",
+      "Analyze full-funnel product and campaign data to pinpoint drop-off points, and build per-product performance reports that turn insights into roadmap and prioritization decisions.",
+      "Manage KOL/influencer partnerships as the primary point of contact, aligning content deliverables and go-live timelines with product release schedules.",
     ],
   },
   {

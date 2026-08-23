@@ -95,11 +95,11 @@ export default function Navbar() {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 py-4 flex items-center justify-between gap-3">
         {/* Logo */}
-        <button onClick={() => goToSection('home')} className="cursor-pointer">
+        <button onClick={() => goToSection('home')} className="cursor-pointer min-w-0">
           <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-2">
-            <span className="font-display font-semibold text-white hidden sm:block transition-colors hover:text-accent">
+            <span className="font-display font-semibold text-white text-sm sm:text-base whitespace-nowrap transition-colors hover:text-accent">
               Abdullah<span className="text-accent"> Fakhri</span>
             </span>
           </motion.div>
@@ -118,7 +118,9 @@ export default function Navbar() {
           </button>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden text-gray-400 hover:text-white p-1"
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
+            className="md:hidden text-gray-400 hover:text-white p-2 -mr-2"
           >
             {mobileOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
           </button>
@@ -132,9 +134,9 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-navy-800/95 backdrop-blur-md border-t border-white/5"
+            className="md:hidden bg-navy-800/95 backdrop-blur-md border-t border-white/5 overflow-hidden"
           >
-            <div className="px-6 py-4 flex flex-col gap-1">
+            <div className="px-5 sm:px-6 py-4 flex flex-col gap-1 max-h-[70svh] overflow-y-auto">
               {navLinks.map((link) => (
                 <button
                   key={link.label}
