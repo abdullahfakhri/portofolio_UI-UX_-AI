@@ -17,12 +17,12 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-navy-950 border-t border-white/5 py-12 sm:py-16 overflow-hidden text-center">
+    <footer className="relative bg-subtle border-t border-ink/10 py-12 sm:py-16 overflow-hidden text-center">
       {/* Rotating accent blob (reference footer) */}
       <div className="blob-animate" style={{ right: '-3rem', bottom: '-3rem' }} />
 
       <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-6 flex flex-col items-center gap-3">
-        <p className="text-white">
+        <p className="text-ink">
           All Rights Reserved By{' '}
           <span className="text-accent font-display">Abdullah Fakhri</span>
         </p>
@@ -35,7 +35,7 @@ export default function Footer() {
           onClick={backToTop}
           whileHover={{ y: -3 }}
           whileTap={{ scale: 0.9 }}
-          className="mt-4 w-11 h-11 rounded-full grid place-items-center bg-navy-900 border-[3px] border-accent text-white hover:shadow-[0_0_24px_#8b73e6] transition-shadow"
+          className="mt-4 w-11 h-11 rounded-full grid place-items-center bg-ink border-[3px] border-ink text-white hover:bg-accent hover:border-accent transition-colors"
           aria-label="Back to top"
         >
           <FiArrowUp size={18} />

@@ -7,7 +7,7 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="about" className="relative bg-navy-900 pt-24 sm:pt-32 lg:pt-48 pb-16 sm:pb-20 overflow-hidden" style={{ marginTop: '-2px' }}>
+    <section id="about" className="relative bg-white pt-24 sm:pt-32 lg:pt-48 pb-16 sm:pb-20 overflow-hidden" style={{ marginTop: '-2px' }}>
       <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-10" ref={ref}>
 
         {/* ── Two-column hero intro ── */}
@@ -65,11 +65,11 @@ export default function About() {
 
             <h2 className="font-black leading-[1.05] mb-6" style={{ fontSize: 'clamp(2rem, 9vw, 4.2rem)' }}>
               <span className="gradient-text block">Crafting</span>
-              <span className="text-white block">Experiences</span>
+              <span className="text-ink block">Experiences</span>
             </h2>
 
-            <p className="text-gray-400 text-sm sm:text-base lg:text-lg leading-relaxed mb-8 max-w-lg">
-              I'm a <span className="text-white font-semibold">UI/UX Designer</span>, <span className="text-white font-semibold">Product Designer</span> & <span className="text-white font-semibold">Front End Developer</span> passionate about crafting meaningful digital experiences. Driven by curiosity and design thinking, I explore the intersection of <span className="text-accent font-semibold">design and AI</span> to build products that feel intuitive and delightful.
+            <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed mb-8 max-w-lg">
+              I'm a <span className="text-ink font-semibold">UI/UX Designer</span>, <span className="text-ink font-semibold">Product Designer</span> & <span className="text-ink font-semibold">Front End Developer</span> passionate about crafting meaningful digital experiences. Driven by curiosity and design thinking, I explore the intersection of <span className="text-accent font-semibold">design and AI</span> to build products that feel intuitive and delightful.
             </p>
 
             <motion.a

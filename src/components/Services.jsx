@@ -34,18 +34,18 @@ function ServiceCard({ service, index, inView }) {
         >
           {num}
         </span>
-        <span className="grid place-items-center w-11 h-11 rounded-full bg-navy-900 border-[2px] border-white/15 text-white text-xl transition-all duration-300 group-hover:border-accent group-hover:rotate-45 group-hover:shadow-[0_0_20px_#8b73e6]">
+        <span className="grid place-items-center w-11 h-11 rounded-full bg-white border-[2px] border-ink/15 text-ink text-xl transition-all duration-300 group-hover:border-accent group-hover:text-accent group-hover:rotate-45">
           <FiArrowUpRight />
         </span>
       </div>
 
       {/* Title */}
-      <h3 className="relative z-10 font-display font-bold text-xl sm:text-2xl mb-3 text-white group-hover:text-accent transition-colors">
+      <h3 className="relative z-10 font-display font-bold text-xl sm:text-2xl mb-3 text-ink group-hover:text-accent transition-colors">
         {service.title}
       </h3>
 
       {/* Description */}
-      <p className="relative z-10 text-gray-400 text-sm leading-relaxed mb-6">
+      <p className="relative z-10 text-gray-600 text-sm leading-relaxed mb-6">
         {service.description}
       </p>
 
@@ -66,7 +66,7 @@ export default function Services() {
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="services" className="relative bg-navy-900 py-16 sm:py-24 overflow-hidden">
+    <section id="services" className="relative bg-white py-16 sm:py-24 overflow-hidden">
       {/* Decorative top glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[400px] pointer-events-none opacity-50"

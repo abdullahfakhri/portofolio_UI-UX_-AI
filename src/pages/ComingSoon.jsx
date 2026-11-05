@@ -7,7 +7,7 @@ const LOTTIE_SRC = 'https://lottie.host/ba1d1fd5-b7d9-4764-8d7b-acb490af6c43/ex9
 
 export default function ComingSoon() {
   return (
-    <main className="relative bg-navy-900 overflow-hidden min-h-screen">
+    <main className="relative bg-white overflow-hidden min-h-screen">
       {/* Top glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[700px] h-[460px] pointer-events-none opacity-60"
@@ -26,7 +26,7 @@ export default function ComingSoon() {
         >
           <RouterLink
             to="/"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-accent transition-colors text-sm font-display"
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-accent transition-colors text-sm font-display"
           >
             <FiArrowLeft />
             Back to home
@@ -63,7 +63,7 @@ export default function ComingSoon() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-gray-400 text-base sm:text-lg mt-5 max-w-md"
+            className="text-gray-600 text-base sm:text-lg mt-5 max-w-md"
           >
             My Dribbble portfolio is still in the works. Fresh shots and design
             explorations will land here soon — stay tuned ✨

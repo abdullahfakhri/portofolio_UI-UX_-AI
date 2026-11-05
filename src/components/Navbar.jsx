@@ -44,8 +44,8 @@ export default function Navbar() {
   };
 
   const linkBase =
-    'relative px-4 py-2 text-sm font-display font-semibold text-gray-300 hover:text-accent hover:[text-shadow:0_8px_16px_rgba(139,115,230,0.8)] transition-all cursor-pointer';
-  const activeClasses = '!text-accent [text-shadow:0_8px_16px_rgba(139,115,230,0.8)]';
+    'relative px-4 py-2 text-sm font-display font-semibold text-gray-700 hover:text-accent hover:[text-shadow:0_6px_14px_rgba(111,79,222,0.25)] transition-all cursor-pointer';
+  const activeClasses = '!text-accent [text-shadow:0_6px_14px_rgba(111,79,222,0.25)]';
 
   const renderDesktopLink = (link) => {
     if (link.type === 'route') {
@@ -91,7 +91,7 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-navy-900/90 backdrop-blur-md border-b border-white/5 shadow-lg shadow-black/20'
+          ? 'bg-white/90 backdrop-blur-md border-b border-ink/10 shadow-sm shadow-ink/5'
           : 'bg-transparent'
       }`}
     >
@@ -99,7 +99,7 @@ export default function Navbar() {
         {/* Logo */}
         <button onClick={() => goToSection('home')} className="cursor-pointer min-w-0">
           <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-2">
-            <span className="font-display font-semibold text-white text-sm sm:text-base whitespace-nowrap transition-colors hover:text-accent">
+            <span className="font-display font-semibold text-ink text-sm sm:text-base whitespace-nowrap transition-colors hover:text-accent">
               Abdullah<span className="text-accent"> Fakhri</span>
             </span>
           </motion.div>
@@ -120,7 +120,7 @@ export default function Navbar() {
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
-            className="md:hidden text-gray-400 hover:text-white p-2 -mr-2"
+            className="md:hidden text-gray-600 hover:text-ink p-2 -mr-2"
           >
             {mobileOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
           </button>
@@ -134,7 +134,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-navy-800/95 backdrop-blur-md border-t border-white/5 overflow-hidden"
+            className="md:hidden bg-white/95 backdrop-blur-md border-t border-ink/10 overflow-hidden"
           >
             <div className="px-5 sm:px-6 py-4 flex flex-col gap-1 max-h-[70svh] overflow-y-auto">
               {navLinks.map((link) => (
@@ -144,7 +144,7 @@ export default function Navbar() {
                     if (link.type === 'route') goToRoute(link.to);
                     else goToSection(link.to);
                   }}
-                  className="py-3 text-left text-gray-300 hover:text-accent font-display font-medium transition-colors cursor-pointer border-b border-white/5 last:border-0"
+                  className="py-3 text-left text-gray-700 hover:text-accent font-display font-medium transition-colors cursor-pointer border-b border-ink/10 last:border-0"
                 >
                   {link.label}
                 </button>

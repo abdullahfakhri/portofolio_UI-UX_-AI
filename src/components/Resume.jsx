@@ -33,34 +33,34 @@ function ExperienceItem({ item, index }) {
       transition={{ duration: 0.45, delay: index * 0.1 }}
       className="relative pl-10 sm:pl-12 md:pl-20 pb-10 sm:pb-12 last:pb-0"
     >
-      <span className="absolute left-[18px] md:left-[30px] top-2 -translate-x-1/2 w-4 h-4 rounded-full bg-navy-900 border-[3px] border-accent shadow-[0_0_16px_#8b73e6] z-10" />
+      <span className="absolute left-[18px] md:left-[30px] top-2 -translate-x-1/2 w-4 h-4 rounded-full bg-white border-[3px] border-accent shadow-[0_0_16px_#8b73e6] z-10" />
 
       <div className="surface-card p-5 md:p-7 group hover:border-accent/30 transition-colors">
         <div className="blob" style={{ right: '-7rem', top: '-6rem', width: '220px', height: '220px' }} />
 
         <div className="relative z-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-          <h3 className="font-display font-bold text-lg md:text-xl text-white group-hover:text-accent transition-colors">
+          <h3 className="font-display font-bold text-lg md:text-xl text-ink group-hover:text-accent transition-colors">
             {item.role}
           </h3>
           <span
             className={`shrink-0 inline-flex items-center rounded-full px-3 py-1 text-xs font-display ${
               item.current
                 ? 'bg-accent/15 text-accent border border-accent/40'
-                : 'bg-white/5 text-gray-400 border border-white/10'
+                : 'bg-ink/[0.04] text-gray-600 border border-ink/10'
             }`}
           >
             {item.period}
           </span>
         </div>
 
-        <p className="relative z-10 text-gray-300 font-display text-sm mb-4">
+        <p className="relative z-10 text-gray-700 font-display text-sm mb-4">
           {item.company}
-          <span className="text-gray-600"> · {item.location}</span>
+          <span className="text-gray-500"> · {item.location}</span>
         </p>
 
         <ul className="relative z-10 space-y-2">
           {item.points.map((point, i) => (
-            <li key={i} className="flex gap-3 text-gray-400 text-sm leading-relaxed">
+            <li key={i} className="flex gap-3 text-gray-600 text-sm leading-relaxed">
               <span className="mt-2 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
               <span>{point}</span>
             </li>
@@ -104,25 +104,25 @@ function EducationPanel() {
               transition={{ delay: 0.1 + i * 0.1 }}
               className="relative mb-8 last:mb-0"
             >
-              <div className="absolute -left-[30px] top-1 w-4 h-4 rounded-full bg-gradient-to-br from-accent to-accent-purple border-2 border-navy-950 shadow-[0_0_12px_#8b73e6]" />
+              <div className="absolute -left-[30px] top-1 w-4 h-4 rounded-full bg-gradient-to-br from-accent to-accent-purple border-2 border-white shadow-[0_0_12px_#8b73e6]" />
               <div className="glass-card p-5 sm:p-6 hover:border-accent/30 transition-colors">
                 <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                   <div>
                     <h4 className="font-bold text-lg">{edu.degree}</h4>
                     <p className="text-accent font-medium">{edu.major}</p>
                   </div>
-                  <span className="flex items-center gap-1.5 text-xs text-gray-500 bg-white/5 px-3 py-1.5 rounded-full whitespace-nowrap">
+                  <span className="flex items-center gap-1.5 text-xs text-gray-500 bg-ink/[0.04] px-3 py-1.5 rounded-full whitespace-nowrap">
                     <FiCalendar size={11} /> {edu.period}
                   </span>
                 </div>
-                <p className="flex items-center gap-2 text-gray-300 font-medium mb-1">
+                <p className="flex items-center gap-2 text-gray-700 font-medium mb-1">
                   <FiBook size={14} className="text-accent" />
                   {edu.institution}
                 </p>
                 <p className="flex items-center gap-2 text-gray-500 text-sm mb-3">
                   <FiMapPin size={12} /> {edu.location}
                 </p>
-                <p className="text-gray-400 text-sm leading-relaxed">{edu.description}</p>
+                <p className="text-gray-600 text-sm leading-relaxed">{edu.description}</p>
               </div>
             </motion.div>
           ))}
@@ -155,7 +155,7 @@ function EducationPanel() {
                 <FiAward size={20} style={{ color: cert.color }} />
               </div>
               <div className="flex-1 min-w-0">
-                <h4 className="font-semibold text-sm group-hover:text-white transition-colors">
+                <h4 className="font-semibold text-sm group-hover:text-ink transition-colors">
                   {cert.title}
                 </h4>
                 <p className="text-gray-500 text-xs mt-0.5">{cert.issuer}</p>
@@ -176,7 +176,7 @@ export default function Resume() {
   const { tab, setTab } = useResumeTab();
 
   return (
-    <section id="experience" className="relative bg-navy-950 py-14 sm:py-20">
+    <section id="experience" className="relative bg-subtle py-14 sm:py-20">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-blue/30 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-purple/30 to-transparent" />
 
@@ -205,20 +205,20 @@ export default function Resume() {
           transition={{ delay: 0.15 }}
           className="flex justify-center mb-10 sm:mb-12"
         >
-          <div className="inline-flex gap-1 p-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+          <div className="inline-flex gap-1 p-1.5 rounded-full bg-ink/[0.04] border border-ink/10 backdrop-blur-sm">
             {tabs.map((t) => (
               <button
                 key={t.id}
                 onClick={() => setTab(t.id)}
                 className={`relative inline-flex items-center gap-2 rounded-full px-5 sm:px-7 py-2.5 text-sm font-display font-semibold transition-colors ${
-                  tab === t.id ? 'text-white' : 'text-gray-400 hover:text-white'
+                  tab === t.id ? 'text-white' : 'text-gray-500 hover:text-ink'
                 }`}
               >
                 {tab === t.id && (
                   <motion.span
                     layoutId="resume-tab-pill"
                     transition={{ type: 'spring', stiffness: 400, damping: 32 }}
-                    className="absolute inset-0 rounded-full bg-navy-900 border-[2px] border-accent shadow-[0_4px_20px_rgba(139,115,230,0.45)]"
+                    className="absolute inset-0 rounded-full bg-ink"
                   />
                 )}
                 <span className="relative z-10">{t.icon}</span>

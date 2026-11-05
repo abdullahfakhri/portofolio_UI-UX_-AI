@@ -16,8 +16,8 @@ const toolIcons = {
 function ProjectVisual({ project, num, className = '', miniNumber = false }) {
   return (
     <div
-      className={`relative w-full overflow-hidden rounded-[2rem] border border-white/[0.06] ${className}`}
-      style={{ background: `linear-gradient(135deg, ${project.color}33 0%, #0d1530 65%)` }}
+      className={`relative w-full overflow-hidden rounded-[2rem] border border-ink/10 ${className}`}
+      style={{ background: `linear-gradient(135deg, ${project.color}33 0%, #f3f3f4 65%)` }}
     >
       {project.image ? (
         <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
@@ -32,7 +32,7 @@ function ProjectVisual({ project, num, className = '', miniNumber = false }) {
             className="absolute inset-0 opacity-10"
             style={{
               backgroundImage:
-                'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+                'linear-gradient(rgba(13,12,34,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(13,12,34,0.06) 1px, transparent 1px)',
               backgroundSize: '24px 24px',
             }}
           />
@@ -55,7 +55,7 @@ function MetaItem({ label, value }) {
   return (
     <div>
       <p className="font-display text-xs uppercase tracking-wide text-gray-500 mb-1">{label}</p>
-      <p className="text-white text-sm">{value}</p>
+      <p className="text-ink text-sm">{value}</p>
     </div>
   );
 }
@@ -75,7 +75,7 @@ export default function ProjectDetail() {
   const sections = project.sections || [];
 
   return (
-    <main className="relative bg-navy-900 overflow-hidden">
+    <main className="relative bg-white overflow-hidden">
       {/* Top glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[700px] h-[460px] pointer-events-none opacity-60"
@@ -94,7 +94,7 @@ export default function ProjectDetail() {
         >
           <RouterLink
             to="/projects"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-accent transition-colors text-sm font-display"
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-accent transition-colors text-sm font-display"
           >
             <FiArrowLeft />
             Back to projects
@@ -112,7 +112,7 @@ export default function ProjectDetail() {
             <span className="font-display font-black leading-none gradient-text" style={{ fontSize: 'clamp(1.9rem, 8vw, 2.25rem)' }}>
               {num}
             </span>
-            <span className="font-display text-gray-400 text-xs sm:text-sm tracking-wide uppercase">
+            <span className="font-display text-gray-600 text-xs sm:text-sm tracking-wide uppercase">
               {project.category} · {project.year}
             </span>
           </motion.div>
@@ -133,7 +133,7 @@ export default function ProjectDetail() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="text-gray-400 text-base sm:text-lg mt-5 sm:mt-6 max-w-2xl leading-relaxed"
+            className="text-gray-600 text-base sm:text-lg mt-5 sm:mt-6 max-w-2xl leading-relaxed"
           >
             {project.overview || project.description}
           </motion.p>
@@ -155,7 +155,7 @@ export default function ProjectDetail() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mt-10 sm:mt-14 py-8 sm:py-10 border-y border-white/[0.06]"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mt-10 sm:mt-14 py-8 sm:py-10 border-y border-ink/10"
         >
           <MetaItem label="Role" value={project.role} />
           <MetaItem label="Category" value={project.category} />
@@ -205,15 +205,15 @@ export default function ProjectDetail() {
                   <span className="font-display text-accent text-sm">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <h2 className="font-display font-bold text-white" style={{ fontSize: 'clamp(1.4rem, 3vw, 2rem)' }}>
+                  <h2 className="font-display font-bold text-ink" style={{ fontSize: 'clamp(1.4rem, 3vw, 2rem)' }}>
                     {s.title}
                   </h2>
                 </div>
                 {s.body && (
-                  <p className="text-gray-400 text-base sm:text-lg leading-relaxed pl-0 md:pl-9">{s.body}</p>
+                  <p className="text-gray-600 text-base sm:text-lg leading-relaxed pl-0 md:pl-9">{s.body}</p>
                 )}
                 {s.points && s.points.length > 0 && (
-                  <ul className={`list-disc marker:text-accent pl-5 md:pl-14 space-y-2 text-gray-400 text-base sm:text-lg leading-relaxed ${s.body ? 'mt-4' : ''}`}>
+                  <ul className={`list-disc marker:text-accent pl-5 md:pl-14 space-y-2 text-gray-600 text-base sm:text-lg leading-relaxed ${s.body ? 'mt-4' : ''}`}>
                     {s.points.map((point) => (
                       <li key={point}>{point}</li>
                     ))}
@@ -227,7 +227,7 @@ export default function ProjectDetail() {
                   {s.images.map((src) => (
                     <div
                       key={src}
-                      className="overflow-hidden rounded-[1.75rem] border border-white/[0.06] bg-navy-800"
+                      className="overflow-hidden rounded-[1.75rem] border border-ink/10 bg-surface"
                     >
                       <img src={src} alt={s.title} className="w-full h-auto block" loading="lazy" />
                     </div>
@@ -254,7 +254,7 @@ export default function ProjectDetail() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="mt-16 sm:mt-24 pt-10 border-t border-white/[0.06]"
+          className="mt-16 sm:mt-24 pt-10 border-t border-ink/10"
         >
           <p className="font-display text-xs uppercase tracking-wide text-gray-500 mb-4">Next project</p>
           <RouterLink
@@ -262,14 +262,14 @@ export default function ProjectDetail() {
             className="group flex items-center justify-between gap-4 sm:gap-6"
           >
             <div>
-              <h3 className="font-display font-bold text-white text-xl sm:text-2xl group-hover:text-accent transition-colors">
+              <h3 className="font-display font-bold text-ink text-xl sm:text-2xl group-hover:text-accent transition-colors">
                 {nextProject.title}
               </h3>
-              <p className="text-gray-400 text-sm mt-1">
+              <p className="text-gray-600 text-sm mt-1">
                 {nextProject.category} · {nextProject.year}
               </p>
             </div>
-            <span className="grid place-items-center w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 rounded-full bg-navy-900 border-[3px] border-accent text-white text-2xl transition-all duration-300 group-hover:shadow-[0_0_24px_#8b73e6]">
+            <span className="grid place-items-center w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 rounded-full bg-ink border-[3px] border-ink text-white text-2xl transition-all duration-300 group-hover:bg-accent group-hover:border-accent">
               <FiArrowRight />
             </span>
           </RouterLink>

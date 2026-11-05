@@ -7,20 +7,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        navy: {
-          950: '#020817',
-          900: '#0a0f1e',
-          800: '#0d1530',
-          700: '#111b45',
-          600: '#1a2760',
-        },
-        // Dark card surface (reference --container-color over a navy base)
-        container: '#0e1124',
+        // Light theme: white page, near-black ink, light gray surfaces.
+        ink: '#0d0c22',
+        subtle: '#f8f8f9', // alternate section background
+        surface: '#f3f3f4', // cards and image placeholders
         accent: {
-          // Purple-led, matching the reference's signature glow
-          DEFAULT: '#8b73e6',
-          light: '#a99cf0',
-          dark: '#6f4fde',
+          // Purple accent, darkened so small text passes 4.5:1 on white
+          DEFAULT: '#6f4fde',
+          light: '#8b73e6',
+          dark: '#5b3fc4',
           blue: '#3b82f6',
           indigo: '#6366f1',
           purple: '#8b5cf6',

@@ -12,16 +12,16 @@ function ProjectCard({ project }) {
     return (
       <div className="surface-card p-5 sm:p-7 group h-full flex flex-col">
         <div className="relative z-10 flex items-center justify-between mb-6">
-          <span className="font-display font-black leading-none text-white" style={{ fontSize: 'clamp(2rem, 8vw, 2.5rem)' }}>
+          <span className="font-display font-black leading-none text-ink" style={{ fontSize: 'clamp(2rem, 8vw, 2.5rem)' }}>
             {num}
           </span>
-          <span className="font-display text-gray-300 text-sm sm:text-base">{project.category}</span>
+          <span className="font-display text-gray-700 text-sm sm:text-base">{project.category}</span>
         </div>
-        <h3 className="relative z-10 font-display font-bold text-xl mb-4 text-white">{project.title}</h3>
+        <h3 className="relative z-10 font-display font-bold text-xl mb-4 text-ink">{project.title}</h3>
         <div className="relative z-10 mb-6">
-          <p className="text-gray-400 text-sm leading-relaxed">{project.techstack}</p>
+          <p className="text-gray-600 text-sm leading-relaxed">{project.techstack}</p>
         </div>
-        <div className="relative z-10 rounded-2xl overflow-hidden aspect-[4/3] mt-auto grid place-items-center bg-navy-800">
+        <div className="relative z-10 rounded-2xl overflow-hidden aspect-[4/3] mt-auto grid place-items-center bg-surface">
           <dotlottie-wc
             src={project.lottie}
             speed="1"
@@ -44,39 +44,39 @@ function ProjectCard({ project }) {
       {/* Top row: number + category label */}
       <div className="relative z-10 flex items-center justify-between mb-6">
         <span
-          className="font-display font-black leading-none text-white"
+          className="font-display font-black leading-none text-ink"
           style={{ fontSize: 'clamp(2rem, 8vw, 2.5rem)' }}
         >
           {num}
         </span>
-        <span className="font-display text-gray-300 text-sm sm:text-base">
+        <span className="font-display text-gray-700 text-sm sm:text-base">
           {project.category}
         </span>
       </div>
 
       {/* Title */}
-      <h3 className="relative z-10 font-display font-bold text-xl mb-4 text-white group-hover:text-accent transition-colors">
+      <h3 className="relative z-10 font-display font-bold text-xl mb-4 text-ink group-hover:text-accent transition-colors">
         {project.title}
       </h3>
 
       {/* Techstack */}
       <div className="relative z-10 mb-6">
-        <p className="text-gray-400 font-display text-xs mb-1.5">Techstack used</p>
-        <p className="text-gray-400 text-sm leading-relaxed">{project.techstack}</p>
+        <p className="text-gray-600 font-display text-xs mb-1.5">Techstack used</p>
+        <p className="text-gray-600 text-sm leading-relaxed">{project.techstack}</p>
       </div>
 
       {/* Image / preview area */}
       <div
         className="relative z-10 rounded-2xl overflow-hidden aspect-[4/3] mt-auto"
         style={{
-          background: `linear-gradient(135deg, ${project.color}33 0%, #0d1530 60%)`,
+          background: `linear-gradient(135deg, ${project.color}33 0%, #f3f3f4 60%)`,
         }}
       >
         {/* Circular hover arrow (reference projects__button) */}
         <RouterLink
           to={`/projects/${project.slug || project.id}`}
           aria-label={`View ${project.title}`}
-          className="absolute top-3 right-3 z-20 grid place-items-center w-12 h-12 rounded-full bg-navy-900 border-[3px] border-accent text-white text-2xl opacity-0 group-hover:opacity-100 transition-all duration-300 hover:shadow-[0_0_24px_#8b73e6]"
+          className="absolute top-3 right-3 z-20 grid place-items-center w-12 h-12 rounded-full bg-ink border-[3px] border-ink text-white text-2xl opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent hover:border-accent"
         >
           <FiArrowUpRight />
         </RouterLink>
@@ -91,7 +91,7 @@ function ProjectCard({ project }) {
             <div
               className="absolute inset-0 opacity-10"
               style={{
-                backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+                backgroundImage: 'linear-gradient(rgba(13,12,34,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(13,12,34,0.06) 1px, transparent 1px)',
                 backgroundSize: '24px 24px',
               }}
             />
@@ -168,7 +168,7 @@ export default function Projects() {
   }, [isPaused]);
 
   return (
-    <section id="projects" className="relative bg-navy-900 py-16 sm:py-24 overflow-hidden">
+    <section id="projects" className="relative bg-white py-16 sm:py-24 overflow-hidden">
       {/* Decorative blue glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[400px] pointer-events-none opacity-50"
@@ -243,7 +243,7 @@ export default function Projects() {
                 className={`block rounded-full transition-all duration-300 ${
                   activeIndex === idx
                     ? 'w-8 h-2 bg-accent'
-                    : 'w-2 h-2 bg-white/20 group-hover:bg-white/40'
+                    : 'w-2 h-2 bg-ink/20 group-hover:bg-ink/40'
                 }`}
               />
             </button>

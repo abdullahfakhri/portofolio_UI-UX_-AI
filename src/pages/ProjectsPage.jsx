@@ -18,11 +18,11 @@ function ProjectRow({ project, index }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.6 }}
-        className="grid md:grid-cols-2 gap-8 md:gap-16 items-center py-10 sm:py-14 border-b border-white/[0.06] last:border-0"
+        className="grid md:grid-cols-2 gap-8 md:gap-16 items-center py-10 sm:py-14 border-b border-ink/10 last:border-0"
       >
         <div
-          className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/[0.06] grid place-items-center"
-          style={{ background: `linear-gradient(135deg, ${project.color}33 0%, #0d1530 65%)` }}
+          className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden border border-ink/10 grid place-items-center"
+          style={{ background: `linear-gradient(135deg, ${project.color}33 0%, #f3f3f4 65%)` }}
         >
           <dotlottie-wc
             src={project.lottie}
@@ -37,13 +37,13 @@ function ProjectRow({ project, index }) {
             <span className="font-display font-black leading-none gradient-text" style={{ fontSize: 'clamp(2.25rem, 9vw, 3rem)' }}>
               {num}
             </span>
-            <span className="h-px flex-1 bg-white/10" />
-            <span className="font-display text-gray-400 text-xs sm:text-sm tracking-wide uppercase">{project.category}</span>
+            <span className="h-px flex-1 bg-ink/10" />
+            <span className="font-display text-gray-600 text-xs sm:text-sm tracking-wide uppercase">{project.category}</span>
           </div>
-          <h3 className="font-display font-bold text-white leading-tight mb-4" style={{ fontSize: 'clamp(1.6rem, 3vw, 2.5rem)' }}>
+          <h3 className="font-display font-bold text-ink leading-tight mb-4" style={{ fontSize: 'clamp(1.6rem, 3vw, 2.5rem)' }}>
             {project.title}
           </h3>
-          <p className="text-gray-400 leading-relaxed mb-8 max-w-xl">{project.description}</p>
+          <p className="text-gray-600 leading-relaxed mb-8 max-w-xl">{project.description}</p>
           <span className="skill-pill self-start opacity-70">Stay tuned ✨</span>
         </div>
       </motion.article>
@@ -55,8 +55,8 @@ function ProjectRow({ project, index }) {
 
   const Visual = (
     <div
-      className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/[0.06]"
-      style={{ background: `linear-gradient(135deg, ${project.color}33 0%, #0d1530 65%)` }}
+      className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden border border-ink/10"
+      style={{ background: `linear-gradient(135deg, ${project.color}33 0%, #f3f3f4 65%)` }}
     >
       {project.image ? (
         <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
@@ -75,7 +75,7 @@ function ProjectRow({ project, index }) {
             className="absolute inset-0 opacity-10"
             style={{
               backgroundImage:
-                'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+                'linear-gradient(rgba(13,12,34,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(13,12,34,0.06) 1px, transparent 1px)',
               backgroundSize: '24px 24px',
             }}
           />
@@ -95,17 +95,17 @@ function ProjectRow({ project, index }) {
         <span className="font-display font-black leading-none gradient-text" style={{ fontSize: 'clamp(2.25rem, 9vw, 3rem)' }}>
           {num}
         </span>
-        <span className="h-px flex-1 bg-white/10" />
-        <span className="font-display text-gray-400 text-xs sm:text-sm tracking-wide uppercase">
+        <span className="h-px flex-1 bg-ink/10" />
+        <span className="font-display text-gray-600 text-xs sm:text-sm tracking-wide uppercase">
           {project.category} · {project.year}
         </span>
       </div>
 
-      <h3 className="font-display font-bold text-white leading-tight mb-4" style={{ fontSize: 'clamp(1.6rem, 3vw, 2.5rem)' }}>
+      <h3 className="font-display font-bold text-ink leading-tight mb-4" style={{ fontSize: 'clamp(1.6rem, 3vw, 2.5rem)' }}>
         {project.title}
       </h3>
 
-      <p className="text-gray-400 leading-relaxed mb-6 max-w-xl">{project.description}</p>
+      <p className="text-gray-600 leading-relaxed mb-6 max-w-xl">{project.description}</p>
 
       <div className="flex flex-wrap gap-2 mb-8">
         {tags.map((tag) => (
@@ -131,7 +131,7 @@ function ProjectRow({ project, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.6 }}
-      className="grid md:grid-cols-2 gap-8 md:gap-16 items-center py-10 sm:py-14 border-b border-white/[0.06] last:border-0"
+      className="grid md:grid-cols-2 gap-8 md:gap-16 items-center py-10 sm:py-14 border-b border-ink/10 last:border-0"
     >
       <div className={reversed ? 'md:order-2' : ''}>{Visual}</div>
       <div className={reversed ? 'md:order-1' : ''}>{Content}</div>
@@ -145,7 +145,7 @@ export default function ProjectsPage() {
   const hasMore = count < projects.length;
 
   return (
-    <main className="relative bg-navy-900 overflow-hidden">
+    <main className="relative bg-white overflow-hidden">
       {/* Top glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[700px] h-[460px] pointer-events-none opacity-60"
@@ -164,7 +164,7 @@ export default function ProjectsPage() {
         >
           <RouterLink
             to="/"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-accent transition-colors text-sm font-display"
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-accent transition-colors text-sm font-display"
           >
             <FiArrowLeft />
             Back to home
@@ -194,7 +194,7 @@ export default function ProjectsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-gray-400 text-base sm:text-lg mt-5 sm:mt-6 max-w-2xl"
+            className="text-gray-600 text-base sm:text-lg mt-5 sm:mt-6 max-w-2xl"
           >
             A selection of projects where thoughtful design meets clean, performant
             code — from design systems and research to shipped web and mobile products.

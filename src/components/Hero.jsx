@@ -23,7 +23,7 @@ export default function Hero() {
       id="home"
       className="relative overflow-hidden min-h-[100svh] lg:min-h-[115vh]"
       style={{
-        background: 'linear-gradient(180deg, #05040f 0%, #07091a 60%, #0a0f1e 100%)',
+        background: '#ffffff',
       }}
     >
       {/* Rotating accent blob behind photo (reference signature) */}
@@ -40,7 +40,7 @@ export default function Hero() {
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none w-[360px] h-[360px] sm:w-[480px] sm:h-[480px] lg:w-[600px] lg:h-[600px]"
         style={{
-          background: 'radial-gradient(ellipse at center, rgba(139,115,230,0.40) 0%, rgba(111,79,222,0.16) 45%, transparent 70%)',
+          background: 'radial-gradient(ellipse at center, rgba(139,115,230,0.22) 0%, rgba(111,79,222,0.08) 45%, transparent 70%)',
           filter: 'blur(24px)',
         }}
       />
@@ -73,7 +73,7 @@ export default function Hero() {
               initial={{ opacity: 0, x: -32 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="font-black text-white leading-[1.05] break-words"
+              className="font-black text-ink leading-[1.05] break-words"
               style={{ fontSize: 'clamp(1.9rem, 7.5vw, 64px)' }}
             >
               Abdullah<br />
@@ -117,7 +117,7 @@ export default function Hero() {
                 </motion.a>
               );
             })}
-            <div className="hidden lg:block w-px h-10 bg-gradient-to-b from-gray-700 to-transparent mt-1" />
+            <div className="hidden lg:block w-px h-10 bg-gradient-to-b from-gray-300 to-transparent mt-1" />
         </motion.div>
 
         {/* ── CENTER — full-height photo ── */}
@@ -134,7 +134,7 @@ export default function Hero() {
             style={{
               objectFit: 'cover',
               objectPosition: 'top center',
-              filter: 'drop-shadow(0 0 40px rgba(139,115,230,0.30))',
+              filter: 'drop-shadow(0 0 40px rgba(139,115,230,0.22))',
             }}
             draggable={false}
             onError={(e) => {
@@ -145,7 +145,7 @@ export default function Hero() {
           {/* Fallback */}
           <div
             style={{ display: 'none' }}
-            className="w-full h-[42svh] sm:h-[50svh] lg:h-[85vh] flex flex-col items-center justify-center gap-4 text-gray-600"
+            className="w-full h-[42svh] sm:h-[50svh] lg:h-[85vh] flex flex-col items-center justify-center gap-4 text-gray-500"
           >
             <div className="w-32 h-32 sm:w-44 sm:h-44 rounded-full bg-gradient-to-br from-blue-600/30 to-indigo-600/20 border-2 border-blue-500/20 flex items-center justify-center text-6xl font-black gradient-text">
               AF
@@ -199,10 +199,10 @@ export default function Hero() {
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center gap-2 text-gray-600 hover:text-accent transition-colors"
+            className="flex flex-col items-center gap-2 text-gray-500 hover:text-accent transition-colors"
           >
             <span className="text-xs tracking-widest uppercase">Scroll</span>
-            <div className="w-px h-8 bg-gradient-to-b from-gray-600 to-transparent" />
+            <div className="w-px h-8 bg-gradient-to-b from-gray-300 to-transparent" />
           </motion.div>
         </Link>
       </motion.div>
@@ -210,7 +210,7 @@ export default function Hero() {
       {/* Bottom fade */}
       <div
         className="absolute bottom-0 left-0 right-0 h-52 pointer-events-none z-10"
-        style={{ background: 'linear-gradient(to bottom, transparent 0%, #0a0f1e 100%)' }}
+        style={{ background: 'linear-gradient(to bottom, transparent 0%, #ffffff 100%)' }}
       />
     </section>
   );

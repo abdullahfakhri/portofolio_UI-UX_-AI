@@ -40,7 +40,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative bg-navy-900 py-16 sm:py-24 overflow-hidden">
+    <section id="contact" className="relative bg-white py-16 sm:py-24 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
 
       {/* Background glow */}
@@ -55,7 +55,7 @@ export default function Contact() {
         >
           <span className="text-accent text-sm font-display font-semibold tracking-widest uppercase">Get In Touch</span>
           <h2 className="section-title mt-2 mb-4">Contact <span>Me</span></h2>
-          <p className="text-gray-300 font-display text-base sm:text-lg mb-8 px-2">Tell me about your next project.</p>
+          <p className="text-gray-700 font-display text-base sm:text-lg mb-8 px-2">Tell me about your next project.</p>
 
           <motion.button
             onClick={copyEmail}
@@ -80,7 +80,7 @@ export default function Contact() {
             {contactInfo.map((item) => (
               <div key={item.label}>
                 <h3 className="text-accent text-base mb-1">{item.label}</h3>
-                <p className="text-white font-sans break-words">{item.value}</p>
+                <p className="text-ink font-sans break-words">{item.value}</p>
               </div>
             ))}
           </div>
@@ -91,7 +91,7 @@ export default function Contact() {
             <div className="flex flex-col items-center md:items-start gap-2">
               {socialLinks.map((s) => {
                 const className =
-                  'inline-flex items-center gap-2 text-white hover:text-accent font-medium transition-colors';
+                  'inline-flex items-center gap-2 text-ink hover:text-accent font-medium transition-colors';
 
                 // Internal routes (e.g. Dribbble → /coming-soon) use the router.
                 return s.href.startsWith('/') ? (
@@ -127,7 +127,7 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ x: 6 }}
-                  className="inline-flex items-center gap-2 text-white hover:text-accent font-medium transition-colors"
+                  className="inline-flex items-center gap-2 text-ink hover:text-accent font-medium transition-colors"
                 >
                   {s.label}
                   <FiArrowUpRight size={18} />
