@@ -4,10 +4,12 @@ import { SiMeta, SiGooglesheets } from 'react-icons/si';
 import { Link as RouterLink, useParams, Navigate } from 'react-router-dom';
 import { projects } from '../data/portfolioData';
 
-// Brand logos for the "Tools" row. A tool without an entry shows its name only.
+// Brand logos for the "Tools" row: an icon component or an image file.
+// A tool without an entry shows its name only.
 const toolIcons = {
   'Meta Ads': { Icon: SiMeta, color: '#0467DF' },
   'Google Sheets': { Icon: SiGooglesheets, color: '#34A853' },
+  Lark: { src: '/assets/icons/lark.png' },
 };
 
 // Big project visual — reuses the same gradient / image treatment as the cards.
@@ -167,7 +169,8 @@ export default function ProjectDetail() {
                   const entry = toolIcons[tool];
                   return (
                     <span key={tool} className="skill-pill gap-2 py-1.5">
-                      {entry && <entry.Icon size={16} style={{ color: entry.color }} aria-hidden="true" />}
+                      {entry?.Icon && <entry.Icon size={16} style={{ color: entry.color }} aria-hidden="true" />}
+                      {entry?.src && <img src={entry.src} alt="" className="h-4 w-auto" />}
                       {tool}
                     </span>
                   );
