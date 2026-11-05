@@ -1,7 +1,14 @@
 import { motion } from 'framer-motion';
 import { FiArrowUpRight, FiArrowLeft, FiArrowRight } from 'react-icons/fi';
+import { SiMeta, SiGooglesheets } from 'react-icons/si';
 import { Link as RouterLink, useParams, Navigate } from 'react-router-dom';
 import { projects } from '../data/portfolioData';
+
+// Brand logos for the "Tools" row. A tool without an entry shows its name only.
+const toolIcons = {
+  'Meta Ads': { Icon: SiMeta, color: '#0467DF' },
+  'Google Sheets': { Icon: SiGooglesheets, color: '#34A853' },
+};
 
 // Big project visual — reuses the same gradient / image treatment as the cards.
 function ProjectVisual({ project, num, className = '', miniNumber = false }) {
@@ -115,7 +122,7 @@ export default function ProjectDetail() {
             className="font-black leading-[1.05]"
             style={{ fontSize: 'clamp(1.9rem, 7.5vw, 4rem)' }}
           >
-            Designing with purpose:
+            {project.tagline || 'Designing with purpose:'}
             <br />
             <span className="gradient-text">{project.title}</span>
           </motion.h1>
@@ -152,6 +159,22 @@ export default function ProjectDetail() {
           <MetaItem label="Category" value={project.category} />
           <MetaItem label="Timeline" value={project.timeline} />
           <MetaItem label="Year" value={project.year} />
+          {project.tools && project.tools.length > 0 && (
+            <div className="col-span-2 lg:col-span-4">
+              <p className="font-display text-xs uppercase tracking-wide text-gray-500 mb-2">Tools</p>
+              <div className="flex flex-wrap gap-2">
+                {project.tools.map((tool) => {
+                  const entry = toolIcons[tool];
+                  return (
+                    <span key={tool} className="skill-pill gap-2 py-1.5">
+                      {entry && <entry.Icon size={16} style={{ color: entry.color }} aria-hidden="true" />}
+                      {tool}
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+          )}
           <div className="col-span-2 lg:col-span-4">
             <p className="font-display text-xs uppercase tracking-wide text-gray-500 mb-2">Techstack</p>
             <div className="flex flex-wrap gap-2">
@@ -183,7 +206,16 @@ export default function ProjectDetail() {
                     {s.title}
                   </h2>
                 </div>
-                <p className="text-gray-400 text-base sm:text-lg leading-relaxed pl-0 md:pl-9">{s.body}</p>
+                {s.body && (
+                  <p className="text-gray-400 text-base sm:text-lg leading-relaxed pl-0 md:pl-9">{s.body}</p>
+                )}
+                {s.points && s.points.length > 0 && (
+                  <ul className={`list-disc marker:text-accent pl-5 md:pl-14 space-y-2 text-gray-400 text-base sm:text-lg leading-relaxed ${s.body ? 'mt-4' : ''}`}>
+                    {s.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
 
               {/* Full-width case-study images */}

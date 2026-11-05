@@ -158,7 +158,7 @@ export default function Hero() {
         </motion.div>
 
         {/* ── RIGHT ── */}
-        <div className="order-2 flex flex-col justify-start items-start mt-6 lg:mt-0 lg:py-28 lg:pl-8 lg:col-start-3 lg:row-start-1" style={{ minWidth: 0 }}>
+        <div className="order-2 flex flex-col justify-start items-start mt-6 lg:mt-0 lg:py-28 lg:pl-8 lg:col-start-3 lg:row-start-1 [container-type:inline-size]" style={{ minWidth: 0 }}>
           <motion.p
             initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
@@ -172,8 +172,10 @@ export default function Hero() {
             initial={{ opacity: 0, x: 32 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
-            className="font-display font-black leading-tight w-full break-words"
-            style={{ fontSize: 'clamp(1.75rem, 7vw, 4.2rem)' }}
+            className="font-display font-black leading-tight w-full"
+            // Words wrap only at spaces. 11cqw keeps the widest word
+            // ("Performance" ≈ 8.6em + cursor) inside the column.
+            style={{ fontSize: 'min(clamp(1.75rem, 7vw, 4.2rem), 11cqw)' }}
           >
             <TypeAnimation
               sequence={typeRoles}

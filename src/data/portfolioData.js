@@ -5,6 +5,7 @@ export const personalInfo = {
     "UI/UX Designer",
     "Product Designer",
     "Product Manager",
+    "Performance Marketing",
     "Front End Developer",
     "AI Design Engineer",
   ],
@@ -268,6 +269,51 @@ export const projects = [
   },
   {
     id: 6,
+    slug: "voice-institute-meta-ads",
+    title: "Voice Institute Indonesia Meta Ads Campaign",
+    tagline: "Marketing with purpose:",
+    tools: ["Meta Ads", "Google Sheets", "Lark"],
+    techstack: "Meta Ads, Audience Targeting, Budgeting, Campaign Optimization, Performance Reporting",
+    category: "Performance Marketing",
+    year: "2026",
+    role: "Performance Marketing (Team)",
+    timeline: "April 2026",
+    client: "Voice Institute Indonesia",
+    description:
+      "A sales campaign on Meta Ads for Voice Institute Indonesia's online voice-over classes, run as a team at WIZ. It grew ROAS by 24% and revenue by 52%.",
+    image: "/assets/voice-institute.jpg",
+    color: "#c9a24a",
+    link: null,
+    overview:
+      "Voice Institute Indonesia trains people for the voice industry, covering voice over, public speaking, dubbing, and MC work, and sells online voice-over classes. Our performance marketing team at WIZ ran a Meta Ads campaign in April 2026 to drive class sales.",
+    sections: [
+      {
+        title: "Get to know about Voice Institute Indonesia",
+        body: "Voice Institute Indonesia is a training institution for the voice industry: voice over, public speaking, dubbing, and MC. Its main product is a set of online voice-over classes for people who want to learn the craft from anywhere.",
+      },
+      {
+        title: "Objective",
+        body: "Generate sales of the online voice-over classes through Meta Ads on Facebook and Instagram, while keeping ad spend efficient.",
+      },
+      {
+        title: "My Roles",
+        points: [
+          "Defined budgeting for campaigns.",
+          "Defined target audience.",
+          "Performed campaign set up on Meta Ads dashboard.",
+          "Conducted day-to-day optimization.",
+          "Analyzed ads performance (ad set level, ad level, product performance).",
+          "Defined insights and recommendations for future improvements.",
+        ],
+      },
+      {
+        title: "Results",
+        body: "The campaign increased ROAS by 24% and revenue by 52%. The campaign deck and detailed data are not shared because of a non-disclosure agreement.",
+      },
+    ],
+  },
+  {
+    id: 7,
     slug: "coming-soon",
     title: "Coming Soon",
     comingSoon: true,
