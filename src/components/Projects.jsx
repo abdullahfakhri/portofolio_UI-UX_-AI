@@ -50,7 +50,7 @@ function ProjectCard({ project }) {
           {num}
         </span>
         <span className="font-display text-gray-700 text-sm sm:text-base">
-          {project.category}
+          {project.discipline}
         </span>
       </div>
 
@@ -108,12 +108,34 @@ function ProjectCard({ project }) {
   );
 }
 
+// Filter options are derived from each project's `discipline` (the role the
+// project showcases), so a new discipline in the data adds a button on its own.
+const ALL = 'All';
+const categories = [
+  ALL,
+  ...new Set(projects.filter((p) => !p.comingSoon).map((p) => p.discipline)),
+];
+
 export default function Projects() {
   const ref = useRef(null);
   const scrollRef = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
   const [isPaused, setIsPaused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeCategory, setActiveCategory] = useState(ALL);
+
+  // The "Coming Soon" card only appears in the unfiltered view.
+  const visibleProjects =
+    activeCategory === ALL
+      ? projects
+      : projects.filter((p) => !p.comingSoon && p.discipline === activeCategory);
+
+  const selectCategory = (cat) => {
+    if (cat === activeCategory) return;
+    setActiveCategory(cat);
+    setActiveIndex(0);
+    scrollRef.current?.scrollTo({ left: 0, behavior: 'auto' });
+  };
 
   // Card pitch = card width + the flex gap, measured from the DOM so it stays
   // correct across the responsive card width / gap changes.
@@ -132,12 +154,12 @@ export default function Projects() {
 
     const onScroll = () => {
       const idx = Math.round(el.scrollLeft / cardPitch());
-      setActiveIndex(Math.min(idx, projects.length - 1));
+      setActiveIndex(Math.min(idx, visibleProjects.length - 1));
     };
 
     el.addEventListener('scroll', onScroll, { passive: true });
     return () => el.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [visibleProjects.length]);
 
   const scrollToIndex = (idx) => {
     const el = scrollRef.current;
@@ -193,6 +215,35 @@ export default function Projects() {
             </h2>
           </motion.div>
 
+          {/* Category filter */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            role="group"
+            aria-label="Filter projects by type"
+            className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3"
+          >
+            {categories.map((cat) => {
+              const active = activeCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => selectCategory(cat)}
+                  aria-pressed={active}
+                  className={`rounded-full px-4 py-2 sm:px-5 sm:py-2.5 text-sm font-display font-semibold border transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
+                    active
+                      ? 'bg-accent border-accent text-white shadow-lg shadow-accent/30'
+                      : 'bg-white border-ink/15 text-ink hover:border-accent/50 hover:text-accent'
+                  }`}
+                >
+                  {cat}
+                </button>
+              );
+            })}
+          </motion.div>
+
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
             animate={inView ? { scale: 1, opacity: 1 } : {}}
@@ -214,12 +265,12 @@ export default function Projects() {
           className="flex gap-5 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-6 px-5 sm:px-10 hide-scrollbar"
           style={{ scrollBehavior: 'smooth' }}
         >
-          {projects.map((p, i) => (
+          {visibleProjects.map((p, i) => (
             <motion.div
-              key={p.id}
+              key={`${activeCategory}-${p.id}`}
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.1 * i }}
+              transition={{ delay: 0.08 * i }}
               whileHover={{ y: -8 }}
               className="flex-shrink-0 w-[min(84vw,380px)] snap-start"
             >
@@ -231,8 +282,8 @@ export default function Projects() {
         </motion.div>
 
         {/* Dot indicators */}
-        <div className="flex items-center justify-center gap-2.5 mt-8">
-          {projects.map((_, idx) => (
+        <div className={`flex items-center justify-center gap-2.5 mt-8 ${visibleProjects.length <= 1 ? 'invisible' : ''}`}>
+          {visibleProjects.map((_, idx) => (
             <button
               key={idx}
               onClick={() => scrollToIndex(idx)}
