@@ -3,7 +3,7 @@ import { TypeAnimation } from 'react-type-animation';
 import { Link } from 'react-scroll';
 import { Link as RouterLink } from 'react-router-dom';
 import { FiGithub, FiLinkedin, FiInstagram, FiFileText } from 'react-icons/fi';
-import { SiDribbble } from 'react-icons/si';
+import { SiBehance } from 'react-icons/si';
 import { personalInfo } from '../data/portfolioData';
 
 const MotionRouterLink = motion(RouterLink);
@@ -11,7 +11,7 @@ const MotionRouterLink = motion(RouterLink);
 const socialLinks = [
   { icon: <FiLinkedin size={20} />, href: personalInfo.social.linkedin, label: 'LinkedIn' },
   { icon: <FiGithub size={20} />, href: personalInfo.social.github, label: 'GitHub' },
-  { icon: <SiDribbble size={20} />, href: personalInfo.social.dribbble, label: 'Dribbble' },
+  { icon: <SiBehance size={20} />, href: personalInfo.social.behance, label: 'Behance' },
   { icon: <FiInstagram size={20} />, href: personalInfo.social.instagram, label: 'Instagram' },
 ];
 
@@ -98,7 +98,7 @@ export default function Hero() {
               };
               const className = 'text-gray-500 hover:text-accent transition-colors';
 
-              // Internal routes (e.g. Dribbble → /coming-soon) use the router.
+              // Internal routes (e.g. /coming-soon) use the router.
               return s.href.startsWith('/') ? (
                 <MotionRouterLink key={s.label} to={s.href} aria-label={s.label} className={className} {...anim}>
                   {s.icon}

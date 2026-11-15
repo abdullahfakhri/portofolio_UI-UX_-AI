@@ -3,11 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link as ScrollLink, scroller } from 'react-scroll';
 import { useNavigate, useLocation, Link as RouterLink } from 'react-router-dom';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
+import ProjectsMenu from './ProjectsMenu';
 
 const navLinks = [
   { label: 'Home', to: 'home', type: 'scroll' },
   { label: 'About', to: 'about', type: 'scroll' },
-  { label: 'Projects', to: '/projects', type: 'route' },
+  { label: 'Projects', to: '/projects', type: 'route', menu: true },
   { label: 'Career Path', to: 'experience', type: 'scroll' },
   { label: 'Contact', to: 'contact', type: 'scroll' },
 ];
@@ -48,6 +49,16 @@ export default function Navbar() {
   const activeClasses = '!text-accent [text-shadow:0_6px_14px_rgba(111,79,222,0.25)]';
 
   const renderDesktopLink = (link) => {
+    if (link.menu) {
+      return (
+        <ProjectsMenu
+          key={link.label}
+          label={link.label}
+          className={linkBase}
+          activeClassName={activeClasses}
+        />
+      );
+    }
     if (link.type === 'route') {
       const active = location.pathname === link.to;
       return (

@@ -4,8 +4,8 @@ import { FiArrowUpRight } from 'react-icons/fi';
 import { Link as RouterLink } from 'react-router-dom';
 import { projects } from '../data/portfolioData';
 
-function ProjectCard({ project }) {
-  const num = String(project.id).padStart(2, '0');
+function ProjectCard({ project, index }) {
+  const num = String(index + 1).padStart(2, '0');
 
   // Special "Coming Soon" card — shows a Lottie animation instead of a project.
   if (project.comingSoon) {
@@ -111,6 +111,14 @@ function ProjectCard({ project }) {
 // Filter options are derived from each project's `discipline` (the role the
 // project showcases), so a new discipline in the data adds a button on its own.
 const ALL = 'All';
+
+// Newest upload first: a new project gets the next `id`, so it lands on the
+// far left of the row. The "Coming Soon" card always stays at the end.
+const orderedProjects = [
+  ...projects.filter((p) => !p.comingSoon).sort((a, b) => b.id - a.id),
+  ...projects.filter((p) => p.comingSoon),
+];
+
 const categories = [
   ALL,
   ...new Set(projects.filter((p) => !p.comingSoon).map((p) => p.discipline)),
@@ -127,8 +135,8 @@ export default function Projects() {
   // The "Coming Soon" card only appears in the unfiltered view.
   const visibleProjects =
     activeCategory === ALL
-      ? projects
-      : projects.filter((p) => !p.comingSoon && p.discipline === activeCategory);
+      ? orderedProjects
+      : orderedProjects.filter((p) => !p.comingSoon && p.discipline === activeCategory);
 
   const selectCategory = (cat) => {
     if (cat === activeCategory) return;
@@ -274,7 +282,7 @@ export default function Projects() {
               whileHover={{ y: -8 }}
               className="flex-shrink-0 w-[min(84vw,380px)] snap-start"
             >
-              <ProjectCard project={p} />
+              <ProjectCard project={p} index={i} />
             </motion.div>
           ))}
           {/* Spacer for trailing gap */}

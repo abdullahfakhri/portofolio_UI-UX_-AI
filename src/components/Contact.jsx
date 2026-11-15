@@ -15,7 +15,7 @@ const socialLinks = [
   { label: 'LinkedIn', href: personalInfo.social.linkedin },
   { label: 'GitHub', href: personalInfo.social.github },
   { label: 'Instagram', href: personalInfo.social.instagram },
-  { label: 'Dribbble', href: personalInfo.social.dribbble },
+  { label: 'Behance', href: personalInfo.social.behance },
 ];
 
 const writeLinks = [
@@ -93,7 +93,7 @@ export default function Contact() {
                 const className =
                   'inline-flex items-center gap-2 text-ink hover:text-accent font-medium transition-colors';
 
-                // Internal routes (e.g. Dribbble → /coming-soon) use the router.
+                // Internal routes (e.g. /coming-soon) use the router.
                 return s.href.startsWith('/') ? (
                   <MotionRouterLink key={s.label} to={s.href} whileHover={{ x: 6 }} className={className}>
                     {s.label}

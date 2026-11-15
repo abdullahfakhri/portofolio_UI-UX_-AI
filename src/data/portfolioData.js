@@ -17,7 +17,7 @@ export const personalInfo = {
     github: "https://github.com/abdullahfakhri",
     linkedin: "https://www.linkedin.com/in/abdullah-hasan-mufid-fakhri-21815b199/",
     instagram: "https://www.instagram.com/abdullahfakhri_?igsh=MThwaHZyN2RqbmVzdw%3D%3D&utm_source=qr",
-    dribbble: "/coming-soon",
+    behance: "https://www.behance.net/abdullahfakhri",
   },
 };
 
@@ -282,6 +282,7 @@ export const projects = [
     category: "Performance Marketing",
     discipline: "Performance Marketing",
     year: "2026",
+    date: "2026-04", // shown in the navbar Projects menu; use "YYYY-MM-DD" for an exact day
     role: "Performance Marketing (Team)",
     timeline: "April 2026",
     client: "Voice Institute Indonesia",
