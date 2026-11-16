@@ -161,5 +161,101 @@
       "width": 639,
       "height": 852
     }
+  },
+  "/assets/velora-challenge.png": {
+    "full": {
+      "src": "/assets/opt/velora-challenge.webp",
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  "/assets/velora-principle.png": {
+    "full": {
+      "src": "/assets/opt/velora-principle.webp",
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  "/assets/velora-userflow.png": {
+    "full": {
+      "src": "/assets/opt/velora-userflow.webp",
+      "width": 2048,
+      "height": 2779
+    }
+  },
+  "/assets/velora-visual-language.png": {
+    "full": {
+      "src": "/assets/opt/velora-visual-language.webp",
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  "/assets/velora-cashflow.png": {
+    "full": {
+      "src": "/assets/opt/velora-cashflow.webp",
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  "/assets/velora-hide-amounts.png": {
+    "full": {
+      "src": "/assets/opt/velora-hide-amounts.webp",
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  "/assets/velora-slide-to-send.png": {
+    "full": {
+      "src": "/assets/opt/velora-slide-to-send.webp",
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  "/assets/velora-security.png": {
+    "full": {
+      "src": "/assets/opt/velora-security.webp",
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  "/assets/velora-card-control.png": {
+    "full": {
+      "src": "/assets/opt/velora-card-control.webp",
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  "/assets/velora-showcase.png": {
+    "full": {
+      "src": "/assets/opt/velora-showcase.webp",
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  "/assets/velora-tradeoffs.png": {
+    "full": {
+      "src": "/assets/opt/velora-tradeoffs.webp",
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  "/assets/velora-next.png": {
+    "full": {
+      "src": "/assets/opt/velora-next.webp",
+      "width": 2048,
+      "height": 1536
+    }
+  },
+  "/assets/velora.png": {
+    "full": {
+      "src": "/assets/opt/velora.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    "card": {
+      "src": "/assets/opt/velora-card.webp",
+      "width": 960,
+      "height": 540
+    }
   }
 }
