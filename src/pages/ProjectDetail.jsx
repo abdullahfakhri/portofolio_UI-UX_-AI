@@ -79,7 +79,13 @@ export default function ProjectDetail() {
 
   return (
     <main className="relative bg-white overflow-hidden">
-      <ProjectToc key={project.slug} title={project.title} items={tocItems} containerId="case-study" />
+      <ProjectToc
+        key={project.slug}
+        title={project.title}
+        items={tocItems}
+        containerId="case-study"
+        liveLink={project.link}
+      />
       {/* Top glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[700px] h-[460px] pointer-events-none opacity-60"
