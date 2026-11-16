@@ -324,19 +324,19 @@ export const projects = [
     slug: "velora",
     title: "Velora",
     techstack: "Figma, UI/UX, Prototyping, Mobile App, Fintech, Product Thinking",
-    category: "Mobile",
+    category: "UI/UX Designer",
     discipline: "UI/UX Designer",
     year: "2026",
     date: "2026-11", // shown in the navbar Projects menu
     role: "UI/UX Designer",
     tools: ["Figma"],
-    timeline: null,
+    timeline: "1 week",
     client: null,
     description:
       "A concept iOS mobile banking app that shows where your money went right on Home, and keeps every sensitive action under your control.",
     image: "/assets/velora.png",
     color: "#3989F5",
-    link: null,
+    link: "https://www.figma.com/proto/W7f1skd67y2a15sGWcAJCT/App-Mobile-Banking-Velora?node-id=101-1674&p=f&viewport=-142%2C323%2C0.04&t=GpjpBpqilLOzobVm-9&scaling=scale-down&content-scaling=fixed&starting-point-node-id=101%3A1674&show-proto-sidebar=1&page-id=0%3A1",
     overview:
       "Velora is a concept mobile banking app for iOS. Spending, income and monthly cashflow sit right on Home with nothing to log by hand, every amount can be hidden, sending money takes a slide that shows the total, and no money figure appears before login. It is a concept project, not a real bank.",
     sections: [
