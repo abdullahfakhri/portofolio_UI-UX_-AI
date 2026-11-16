@@ -247,15 +247,15 @@
     }
   },
   "/assets/velora.png": {
+    "card": {
+      "src": "/assets/opt/velora-card.webp",
+      "width": 1200,
+      "height": 900
+    },
     "full": {
       "src": "/assets/opt/velora.webp",
       "width": 1920,
       "height": 1080
-    },
-    "card": {
-      "src": "/assets/opt/velora-card.webp",
-      "width": 960,
-      "height": 540
     }
   }
 }
