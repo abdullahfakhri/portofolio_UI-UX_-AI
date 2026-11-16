@@ -197,7 +197,7 @@ export default function ProjectsPage() {
             className="text-gray-600 text-base sm:text-lg mt-5 sm:mt-6 max-w-2xl"
           >
             A selection of projects where thoughtful design meets clean, performant
-            code — from design systems and research to shipped web and mobile products.
+            code, from design systems and research to shipped web and mobile products.
           </motion.p>
         </header>
 

@@ -3,6 +3,7 @@ import { FiArrowUpRight, FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import { SiMeta, SiGooglesheets } from 'react-icons/si';
 import { Link as RouterLink, useParams, Navigate } from 'react-router-dom';
 import { projects } from '../data/portfolioData';
+import ProjectToc, { sectionId } from '../components/ProjectToc';
 
 // Brand logos for the "Tools" row: an icon component or an image file.
 // A tool without an entry shows its name only.
@@ -72,10 +73,12 @@ export default function ProjectDetail() {
   const tags = project.techstack.split(',').map((t) => t.trim());
   const nextProject = projects[(index + 1) % projects.length];
 
-  const sections = project.sections || [];
+  const sections = (project.sections || []).map((s) => ({ ...s, id: sectionId(s.title) }));
+  const tocItems = sections.map((s) => ({ id: s.id, label: s.title }));
 
   return (
     <main className="relative bg-white overflow-hidden">
+      <ProjectToc key={project.slug} title={project.title} items={tocItems} containerId="case-study" />
       {/* Top glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[700px] h-[460px] pointer-events-none opacity-60"
@@ -191,10 +194,11 @@ export default function ProjectDetail() {
         </motion.div>
 
         {/* Narrative sections */}
-        <div className="mt-12 sm:mt-16 space-y-12 sm:space-y-16">
+        <div id="case-study" className="mt-12 sm:mt-16 space-y-12 sm:space-y-16">
           {sections.map((s, i) => (
             <motion.section
-              key={s.title}
+              key={s.id}
+              id={s.id}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}

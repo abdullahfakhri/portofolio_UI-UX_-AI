@@ -90,7 +90,7 @@ export default function Services() {
             Design solutions built for <span className="gradient-text">growth</span>
           </h2>
           <p className="section-subtitle max-w-xl mx-auto !mb-0">
-            From first sketch to shipped product — here's how I help bring digital
+            From first sketch to shipped product, here's how I help bring digital
             ideas to life.
           </p>
         </motion.div>

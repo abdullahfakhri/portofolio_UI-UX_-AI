@@ -66,7 +66,7 @@ export default function ComingSoon() {
             className="text-gray-600 text-base sm:text-lg mt-5 max-w-md"
           >
             My Dribbble portfolio is still in the works. Fresh shots and design
-            explorations will land here soon — stay tuned ✨
+            explorations will land here soon. Stay tuned ✨
           </motion.p>
 
           <motion.div

@@ -12,7 +12,7 @@ const certifications = [
     color: "#8b5cf6",
   },
   {
-    title: "Study Independent — Frontend React JS",
+    title: "Study Independent: Frontend React JS",
     issuer: "Binar Academy",
     year: "2022",
     color: "#3b82f6",
@@ -194,7 +194,7 @@ export default function Resume() {
             Experience & <span className="gradient-text">Education</span>
           </h2>
           <p className="section-subtitle max-w-xl mx-auto !mb-0">
-            My journey so far — switch between work experience and academic background.
+            My journey so far. Switch between work experience and academic background.
           </p>
         </motion.div>
 
