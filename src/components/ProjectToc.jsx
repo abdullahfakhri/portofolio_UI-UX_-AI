@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { FiArrowUpRight } from 'react-icons/fi';
 
 // Space kept above a section heading when jumping to it (fixed navbar + air).
 const OFFSET = 120;
@@ -24,7 +25,8 @@ const prefersReducedMotion = () =>
 
 // Fixed table of contents in the left gutter. Only shown on wide screens.
 // Highlights the section currently being read.
-export default function ProjectToc({ title, items, containerId }) {
+// `liveLink` (optional) adds a last item that opens the live project in a new tab.
+export default function ProjectToc({ title, items, containerId, liveLink }) {
   const [active, setActive] = useState(items[0]?.id);
   const [visible, setVisible] = useState(false);
   // While a click-triggered scroll runs, keep the clicked item highlighted.
@@ -128,6 +130,23 @@ export default function ProjectToc({ title, items, containerId }) {
             </li>
           );
         })}
+        {liveLink && (
+          <li>
+            <a
+              href={liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group -ml-px flex items-center gap-1 border-l-2 border-transparent py-1.5 pl-4 text-sm leading-snug text-accent hover:text-ink transition-colors"
+            >
+              Visit live project
+              <FiArrowUpRight
+                aria-hidden="true"
+                className="flex-shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+              <span className="sr-only">(opens in a new tab)</span>
+            </a>
+          </li>
+        )}
       </ul>
     </nav>
   );
