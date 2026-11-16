@@ -3,6 +3,8 @@ import { motion, useInView } from 'framer-motion';
 import { FiArrowUpRight } from 'react-icons/fi';
 import { Link as RouterLink } from 'react-router-dom';
 import { projects } from '../data/portfolioData';
+import { img } from '../lib/images';
+import Lottie from './Lottie';
 
 function ProjectCard({ project, index }) {
   const num = String(index + 1).padStart(2, '0');
@@ -22,13 +24,7 @@ function ProjectCard({ project, index }) {
           <p className="text-gray-600 text-sm leading-relaxed">{project.techstack}</p>
         </div>
         <div className="relative z-10 rounded-2xl overflow-hidden aspect-[4/3] mt-auto grid place-items-center bg-surface">
-          <dotlottie-wc
-            src={project.lottie}
-            speed="1"
-            loop
-            autoplay
-            style={{ width: '80%', height: '80%' }}
-          />
+          <Lottie src={project.lottie} style={{ width: '80%', height: '80%' }} />
         </div>
       </div>
     );
@@ -81,7 +77,7 @@ function ProjectCard({ project, index }) {
           <FiArrowUpRight />
         </RouterLink>
         {project.image ? (
-          <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+          <img {...img(project.image, 'card')} alt={project.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
         ) : (
           <>
             <div
@@ -204,7 +200,6 @@ export default function Projects() {
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[400px] pointer-events-none opacity-50"
         style={{
           background: 'radial-gradient(ellipse at center, rgba(139,115,230,0.18) 0%, transparent 70%)',
-          filter: 'blur(40px)',
         }}
       />
 

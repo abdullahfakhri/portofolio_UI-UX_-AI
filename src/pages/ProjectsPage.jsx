@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { FiArrowUpRight, FiArrowLeft } from 'react-icons/fi';
 import { Link as RouterLink } from 'react-router-dom';
 import { projects } from '../data/portfolioData';
+import { img } from '../lib/images';
+import Lottie from '../components/Lottie';
 
 const INITIAL_COUNT = 4;
 
@@ -24,13 +26,7 @@ function ProjectRow({ project, index }) {
           className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden border border-ink/10 grid place-items-center"
           style={{ background: `linear-gradient(135deg, ${project.color}33 0%, #f3f3f4 65%)` }}
         >
-          <dotlottie-wc
-            src={project.lottie}
-            speed="1"
-            loop
-            autoplay
-            style={{ width: '78%', height: '78%' }}
-          />
+          <Lottie src={project.lottie} style={{ width: '78%', height: '78%' }} />
         </div>
         <div className="flex flex-col">
           <div className="flex items-center gap-4 mb-4">
@@ -59,7 +55,7 @@ function ProjectRow({ project, index }) {
       style={{ background: `linear-gradient(135deg, ${project.color}33 0%, #f3f3f4 65%)` }}
     >
       {project.image ? (
-        <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+        <img {...img(project.image, 'card')} alt={project.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
       ) : (
         <>
           {/* soft accent blob */}
@@ -151,7 +147,6 @@ export default function ProjectsPage() {
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[700px] h-[460px] pointer-events-none opacity-60"
         style={{
           background: 'radial-gradient(ellipse at center, rgba(139,115,230,0.20) 0%, transparent 70%)',
-          filter: 'blur(50px)',
         }}
       />
 

@@ -72,7 +72,6 @@ export default function Services() {
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[400px] pointer-events-none opacity-50"
         style={{
           background: 'radial-gradient(ellipse at center, rgba(139,115,230,0.18) 0%, transparent 70%)',
-          filter: 'blur(40px)',
         }}
       />
 

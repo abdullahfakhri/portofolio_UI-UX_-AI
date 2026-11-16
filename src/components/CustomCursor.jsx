@@ -30,22 +30,26 @@ function Cursor() {
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
+    // Lerp ring towards dot position. The loop stops once the ring has caught
+    // up and restarts on the next mouse move, so an idle mouse costs nothing.
+    const animate = () => {
+      const speed = 0.12;
+      const dx = pos.current.x - ring.current.x;
+      const dy = pos.current.y - ring.current.y;
+      ring.current.x += dx * speed;
+      ring.current.y += dy * speed;
+      if (ringRef.current) {
+        ringRef.current.style.transform = `translate(${ring.current.x}px, ${ring.current.y}px) translate(-50%, -50%)`;
+      }
+      rafId.current = Math.abs(dx) + Math.abs(dy) > 0.1 ? requestAnimationFrame(animate) : null;
+    };
+
     const onMove = (e) => {
       pos.current = { x: e.clientX, y: e.clientY };
       if (dotRef.current) {
         dotRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
       }
-    };
-
-    // Lerp ring towards dot position
-    const animate = () => {
-      const speed = 0.12;
-      ring.current.x += (pos.current.x - ring.current.x) * speed;
-      ring.current.y += (pos.current.y - ring.current.y) * speed;
-      if (ringRef.current) {
-        ringRef.current.style.transform = `translate(${ring.current.x}px, ${ring.current.y}px) translate(-50%, -50%)`;
-      }
-      rafId.current = requestAnimationFrame(animate);
+      if (!rafId.current) rafId.current = requestAnimationFrame(animate);
     };
 
     const onEnter = (e) => {

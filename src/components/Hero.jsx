@@ -41,7 +41,6 @@ export default function Hero() {
         className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none w-[360px] h-[360px] sm:w-[480px] sm:h-[480px] lg:w-[600px] lg:h-[600px]"
         style={{
           background: 'radial-gradient(ellipse at center, rgba(139,115,230,0.22) 0%, rgba(111,79,222,0.08) 45%, transparent 70%)',
-          filter: 'blur(24px)',
         }}
       />
 
@@ -128,7 +127,10 @@ export default function Hero() {
           className="order-3 flex items-start justify-center mx-auto mt-8 lg:mt-0 lg:pt-28 w-[min(62vw,260px)] lg:w-[clamp(200px,20vw,300px)] lg:col-start-2 lg:row-start-1 lg:row-span-2"
         >
           <img
-            src="/assets/img/Photo Profile.png"
+            src="/assets/opt/photo-profile.webp"
+            width={639}
+            height={852}
+            fetchpriority="high"
             alt="Abdullah Hasan Mufid Fakhri"
             className="w-full select-none h-[42svh] sm:h-[50svh] lg:h-[85vh]"
             style={{

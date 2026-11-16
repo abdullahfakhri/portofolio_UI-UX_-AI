@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { FiArrowRight, FiChevronDown } from 'react-icons/fi';
 import { projects } from '../data/portfolioData';
+import { img } from '../lib/images';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -111,7 +112,7 @@ export default function ProjectsMenu({ label, className, activeClassName }) {
                 >
                   {featured.image && (
                     <img
-                      src={featured.image}
+                      {...img(featured.image, 'card')}
                       alt=""
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
@@ -144,7 +145,7 @@ export default function ProjectsMenu({ label, className, activeClassName }) {
                           style={{ backgroundColor: p.color }}
                         >
                           {p.image && (
-                            <img src={p.image} alt="" className="h-full w-full object-cover" />
+                            <img {...img(p.image, 'card')} alt="" className="h-full w-full object-cover" />
                           )}
                         </span>
                         <span className="min-w-0">

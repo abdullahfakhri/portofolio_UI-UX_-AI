@@ -29,7 +29,6 @@ export default function About() {
               className="absolute inset-0 m-auto pointer-events-none w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] lg:w-[420px] lg:h-[420px]"
               style={{
                 background: 'radial-gradient(circle at center, rgba(139,115,230,0.32) 0%, rgba(111,79,222,0.14) 45%, transparent 70%)',
-                filter: 'blur(20px)',
               }}
             />
 
@@ -38,13 +37,17 @@ export default function About() {
               className="relative w-[min(70vw,280px)] lg:w-[clamp(280px,32vw,420px)] h-[min(56svh,340px)] lg:h-[520px]"
             >
               <img
-                src="/assets/img/Photo Profile.png"
+                src="/assets/opt/photo-profile.webp"
+                width={639}
+                height={852}
+                loading="lazy"
+                decoding="async"
                 alt="Abdullah Hasan Mufid Fakhri"
                 className="w-full h-full select-none"
                 style={{
                   objectFit: 'cover',
                   objectPosition: 'top center',
-                  filter: 'url(#remove-white-bg) drop-shadow(0 0 40px rgba(139,115,230,0.35))',
+                  filter: 'drop-shadow(0 0 40px rgba(139,115,230,0.35))',
                 }}
                 draggable={false}
               />

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { FiArrowLeft } from 'react-icons/fi';
 import { Link as RouterLink } from 'react-router-dom';
+import Lottie from '../components/Lottie';
 
 // Same animation used by the "Coming Soon" project card.
 const LOTTIE_SRC = 'https://lottie.host/ba1d1fd5-b7d9-4764-8d7b-acb490af6c43/ex9SuLjnGE.lottie';
@@ -13,7 +14,6 @@ export default function ComingSoon() {
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[700px] h-[460px] pointer-events-none opacity-60"
         style={{
           background: 'radial-gradient(ellipse at center, rgba(139,115,230,0.20) 0%, transparent 70%)',
-          filter: 'blur(50px)',
         }}
       />
 
@@ -40,13 +40,7 @@ export default function ComingSoon() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
           >
-            <dotlottie-wc
-              src={LOTTIE_SRC}
-              speed="1"
-              loop
-              autoplay
-              style={{ width: 'clamp(240px, 60vw, 360px)', height: 'clamp(240px, 60vw, 360px)' }}
-            />
+            <Lottie src={LOTTIE_SRC} style={{ width: 'clamp(240px, 60vw, 360px)', height: 'clamp(240px, 60vw, 360px)' }} />
           </motion.div>
 
           <motion.h1

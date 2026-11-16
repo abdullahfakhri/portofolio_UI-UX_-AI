@@ -4,6 +4,7 @@ import { SiMeta, SiGooglesheets } from 'react-icons/si';
 import { Link as RouterLink, useParams, Navigate } from 'react-router-dom';
 import { projects } from '../data/portfolioData';
 import ProjectToc, { sectionId } from '../components/ProjectToc';
+import { img } from '../lib/images';
 
 // Brand logos for the "Tools" row: an icon component or an image file.
 // A tool without an entry shows its name only.
@@ -21,7 +22,7 @@ function ProjectVisual({ project, num, className = '', miniNumber = false }) {
       style={{ background: `linear-gradient(135deg, ${project.color}33 0%, #f3f3f4 65%)` }}
     >
       {project.image ? (
-        <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+        <img {...img(project.image)} alt={project.title} className="w-full h-full object-cover" fetchpriority="high" />
       ) : (
         <>
           <div className="blob" style={{ right: '-5rem', bottom: '-5rem', width: '240px', height: '240px' }} />
@@ -84,7 +85,6 @@ export default function ProjectDetail() {
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[700px] h-[460px] pointer-events-none opacity-60"
         style={{
           background: 'radial-gradient(ellipse at center, rgba(139,115,230,0.20) 0%, transparent 70%)',
-          filter: 'blur(50px)',
         }}
       />
 
@@ -233,7 +233,7 @@ export default function ProjectDetail() {
                       key={src}
                       className="overflow-hidden rounded-[1.75rem] border border-ink/10 bg-surface"
                     >
-                      <img src={src} alt={s.title} className="w-full h-auto block" loading="lazy" />
+                      <img {...img(src)} alt={s.title} className="w-full h-auto block" loading="lazy" decoding="async" />
                     </div>
                   ))}
                 </div>
