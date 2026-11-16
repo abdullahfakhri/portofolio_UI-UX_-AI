@@ -321,6 +321,88 @@ export const projects = [
   },
   {
     id: 7,
+    slug: "velora",
+    title: "Velora",
+    techstack: "Figma, UI/UX, Prototyping, Mobile App, Fintech, Product Thinking",
+    category: "Mobile",
+    discipline: "UI/UX Designer",
+    year: "2026",
+    date: "2026-11", // shown in the navbar Projects menu
+    role: "UI/UX Designer",
+    tools: ["Figma"],
+    timeline: null,
+    client: null,
+    description:
+      "A concept iOS mobile banking app that shows where your money went right on Home, and keeps every sensitive action under your control.",
+    image: "/assets/velora.png",
+    color: "#3989F5",
+    link: null,
+    overview:
+      "Velora is a concept mobile banking app for iOS. Spending, income and monthly cashflow sit right on Home with nothing to log by hand, every amount can be hidden, sending money takes a slide that shows the total, and no money figure appears before login. It is a concept project, not a real bank.",
+    sections: [
+      {
+        title: "Get to know about Velora",
+        body: "Velora is a self-initiated concept for an iOS mobile banking app, designed for people who just got a steady monthly salary. It comes with a PRD, user flows, high-fidelity screens and a clickable prototype in Figma. Merchant names and amounts are sample data, and avatars use Apple Memoji.",
+      },
+      {
+        title: "Examining the problem",
+        body: "Two everyday worries are rarely answered together. First, money disappears but nobody knows where to: bank apps show a balance and a list of transactions, and a list is a record, not an answer. Second, there is a small, constant sense of exposure: opening a bank app on a crowded train, doubting the amount before tapping send, and not knowing what to do if the phone gets lost.",
+        images: ["/assets/velora-challenge.png"],
+      },
+      {
+        title: "The solutions we came up with",
+        body: "One principle guides every screen: everything important should be visible, and everything sensitive should be under your control. Pillar 1 puts cashflow right on Home, as one swipeable card with category proportions and any month one tap away. Pillar 2 makes security a visible control: no money figure before login, an eye icon on every amount, slide-to-send with the total on the slider, a one-tap card freeze, and Face ID that triggers on its own.",
+        images: ["/assets/velora-principle.png"],
+      },
+      {
+        title: "Visual language",
+        body: "Calm blue, light surfaces, and SF Pro so the app feels native on iOS. Screens use auto layout, colors, radii and spacing live as Figma variables instead of loose hex codes, and formats are local: Rupiah with dot separators, no decimals, and 24-hour time.",
+        images: ["/assets/velora-visual-language.png"],
+      },
+      {
+        title: "User flow",
+        body: "The flow starts at opening the app and follows each goal to a clear end point: logging in and recovering access, seeing money, sending money, paying a bill with a Virtual Account, and controlling the card. Every failure has a way back to Home, and every end point has a Done button that returns there. Only flows that have final screens are included.",
+        images: ["/assets/velora-userflow.png"],
+      },
+      {
+        title: "Pillar 1: Cashflow on Home",
+        body: "Spending, income and net cashflow for the month live in a swipeable card on Home, so the question 'am I up or down this month?' is answered without opening a report. A month picker and a detail screen with a donut chart and category list are one tap away.",
+        images: ["/assets/velora-cashflow.png"],
+      },
+      {
+        title: "Pillar 2: Security as visible control",
+        points: [
+          "Every amount can be hidden with an eye icon, and each one works independently, so a balance can stay private on a crowded train.",
+          "Sending money uses slide-to-send with the total shown on the slider, then a PIN, so a transfer cannot be sent by accident and the amount is double-checked.",
+          "Login is automatic Face ID with a 6-digit PIN fallback after two failed attempts, an increasing delay after three wrong PINs, and a clear recovery path.",
+          "The virtual card can be frozen in one tap, and a bill can be paid by checking a Virtual Account first, then sliding to pay.",
+        ],
+        images: [
+          "/assets/velora-hide-amounts.png",
+          "/assets/velora-slide-to-send.png",
+          "/assets/velora-security.png",
+          "/assets/velora-card-control.png",
+        ],
+      },
+      {
+        title: "High-fidelity",
+        body: "The final interface applies the visual language to the main screens: Home, All features, Transfer, Other banks, Pay Virtual Account and Cards. Every screen is in English with an Indonesian version that mirrors it, and all of them are linked into one clickable prototype that starts from login.",
+        images: ["/assets/velora-showcase.png"],
+      },
+      {
+        title: "Trade-offs",
+        body: "Every choice has a cost, and I wrote them down. Cashflow takes a large space on Home, so promo cards have no room. Sliding is one gesture slower than a tap, for an action that cannot be undone. No balance before login means no quick peek. Credit, investments, joint accounts, international transfers, points and an AI assistant were left out on purpose.",
+        images: ["/assets/velora-tradeoffs.png"],
+      },
+      {
+        title: "What is next",
+        body: "This is a concept, so nothing here is proven yet. The two questions I most want answered are whether people actually look at the Cashflow card each time they open the app, and whether sliding to send feels calming or annoying for people who transfer many times a day. The plan is to give the prototype to 6 to 8 people with a monthly salary and compare tapping versus sliding.",
+        images: ["/assets/velora-next.png"],
+      },
+    ],
+  },
+  {
+    id: 8,
     slug: "coming-soon",
     title: "Coming Soon",
     comingSoon: true,
