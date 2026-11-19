@@ -338,20 +338,27 @@ export const projects = [
     color: "#3989F5",
     link: "https://www.figma.com/proto/W7f1skd67y2a15sGWcAJCT/App-Mobile-Banking-Velora?node-id=101-1674&p=f&viewport=-142%2C323%2C0.04&t=GpjpBpqilLOzobVm-9&scaling=scale-down&content-scaling=fixed&starting-point-node-id=101%3A1674&show-proto-sidebar=1&page-id=0%3A1",
     overview:
-      "Velora is a concept mobile banking app for iOS. Spending, income and monthly cashflow sit right on Home with nothing to log by hand, every amount can be hidden, sending money takes a slide that shows the total, and no money figure appears before login. It is a concept project, not a real bank.",
+      "Velora is a concept mobile banking app for iOS, built on two pillars: cashflow right on Home, and security as visible control. Spending, income and monthly cashflow sit on Home with nothing to log by hand, every amount can be hidden, sending money takes a slide that shows the total, and no money figure appears before login. It is a concept project, not a real bank.",
     sections: [
       {
         title: "Get to know about Velora",
-        body: "Velora is a self-initiated concept for an iOS mobile banking app, designed for people who just got a steady monthly salary. It comes with a PRD, user flows, high-fidelity screens and a clickable prototype in Figma. Merchant names and amounts are sample data, and avatars use Apple Memoji.",
+        body: "Velora is a self-initiated concept for an iOS mobile banking app, not a real bank. It is designed around Fakhri, a 24-year-old first-jobber with a monthly salary who pays by transfer and QRIS every day and often opens the bank app in public. The project comes with a PRD (v0.2), user flows, high-fidelity screens in Indonesian and English, and a clickable prototype in Figma. When the documents and the Figma file differ, the Figma file wins. The goal is a portfolio piece built on one product decision I can defend. The primary success metric is an assumption that has not been measured yet: a reviewer can name both pillars after looking at the work for about 90 seconds. Merchant names and amounts are sample data, and avatars use Apple Memoji.",
       },
       {
         title: "Examining the problem",
-        body: "Two everyday worries are rarely answered together. First, money disappears but nobody knows where to: bank apps show a balance and a list of transactions, and a list is a record, not an answer. Second, there is a small, constant sense of exposure: opening a bank app on a crowded train, doubting the amount before tapping send, and not knowing what to do if the phone gets lost.",
+        body: "Velora is for workers aged 18 to 30 with a monthly salary who move money every day by transfer and QRIS. I wrote down five problems. All five are assumptions: there are no interviews or user tests behind them yet.",
+        points: [
+          "Not knowing where the money went. A transaction history is a record, not an answer, so people have to scroll and add it up themselves.",
+          "Not knowing whether this month is up or down. Income and spending are never shown side by side.",
+          "Worrying that someone can see the balance. It appears the moment the app opens.",
+          "Being afraid of sending money by mistake. One tap is too easy for an action that cannot be undone.",
+          "Feeling lost after forgetting the PIN or losing the phone. In many apps the recovery path is hidden or leads nowhere.",
+        ],
         images: ["/assets/velora-challenge.png"],
       },
       {
         title: "The solutions we came up with",
-        body: "One principle guides every screen: everything important should be visible, and everything sensitive should be under your control. Pillar 1 puts cashflow right on Home, as one swipeable card with category proportions and any month one tap away. Pillar 2 makes security a visible control: no money figure before login, an eye icon on every amount, slide-to-send with the total on the slider, a one-tap card freeze, and Face ID that triggers on its own.",
+        body: "One principle guides every screen: everything important should be visible, and everything sensitive should be under your control. It becomes two pillars. Pillar 1, cashflow on Home: spending, income and cashflow for the month appear on Home by category, with nothing to log. Pillar 2, security as visible control: no money figure before login, an eye icon on every amount, sending and paying take a slide that shows the total, the virtual card can be frozen, and every failed login has a way out. Spending by category is common in finance apps, so what sets Velora apart is where it sits, on Home instead of in a report menu, and that it can be hidden like every other amount. The tagline sums it up: \"See your money clearly. Keep it safe, calmly.\"",
         images: ["/assets/velora-principle.png"],
       },
       {
@@ -366,23 +373,20 @@ export const projects = [
       },
       {
         title: "Pillar 1: Cashflow on Home",
-        body: "Spending, income and net cashflow for the month live in a swipeable card on Home, so the question 'am I up or down this month?' is answered without opening a report. A month picker and a detail screen with a donut chart and category list are one tap away.",
+        body: "User story 1, see where the money goes: as Fakhri, I want to see this month's spending by category right on Home, so I know where my money goes without logging anything. After login, the Money insights card shows the total and each category's share for the current month. The arrows switch between Spending, Income and Cashflow in the same place, so 'am I up or down this month?' is answered without opening a report. The month picker does not let you pick a month that has not started, and the detail screen lists every category with its share.",
         images: ["/assets/velora-cashflow.png"],
       },
       {
         title: "Pillar 2: Security as visible control",
+        body: "Five user stories cover the second pillar. Each one says what Fakhri wants and what the screens do about it.",
         points: [
-          "Every amount can be hidden with an eye icon, and each one works independently, so a balance can stay private on a crowded train.",
-          "Sending money uses slide-to-send with the total shown on the slider, then a PIN, so a transfer cannot be sent by accident and the amount is double-checked.",
-          "Login is automatic Face ID with a 6-digit PIN fallback after two failed attempts, an increasing delay after three wrong PINs, and a clear recovery path.",
-          "The virtual card can be frozen in one tap, and a bill can be paid by checking a Virtual Account first, then sliding to pay.",
+          "Story 2, hide amounts: as Fakhri, I want to hide my balance and amounts with one tap, so I can open the app safely in public. An eye icon sits next to every amount and turns the figures in that view into Rp••••••, including the balance, the cashflow card and each category. No money figure appears before login.",
+          "Story 3, send money without mistakes: I want to see the total before money leaves, so I do not send the wrong amount. The slider shows the total including the fee, a slide (not a tap) moves it forward, and the PIN screen repeats amount, fee and total before the PIN is entered. Transfers to other banks cost Rp2.500, a sample fee that is an assumption.",
+          "Story 4, pay a Virtual Account: I want to check who is billing me and how much before I pay. Check bill shows the biller, the issuing bank, the amount as the largest element and the deadline. The amount is set by the biller and cannot be changed, the fee is Rp0, and expired, already paid or low balance cases are written as Figma annotations, not drawn.",
+          "Story 5, never locked out: I want a way out when I get the PIN wrong or my account is locked. Face ID starts on its own and falls back to a 6-digit PIN after two failed attempts. Three wrong PINs bring an increasing delay, and every wrong PIN, cooldown and locked screen offers Forgot PIN. The reset takes three steps (code, face check, new PIN) and ends on Home.",
+          "Story 6, freeze the card: I want to freeze my virtual card quickly, so nothing slips through when something looks wrong. One tap shows the card as Frozen, and by rule new transactions are declined. There is no physical card, only a virtual card with Apple Wallet.",
         ],
-        images: [
-          "/assets/velora-hide-amounts.png",
-          "/assets/velora-slide-to-send.png",
-          "/assets/velora-security.png",
-          "/assets/velora-card-control.png",
-        ],
+        images: ["/assets/velora-hide-amounts.png", "/assets/velora-slide-to-send.png", "/assets/velora-security.png", "/assets/velora-card-control.png"],
       },
       {
         title: "High-fidelity",
@@ -391,12 +395,24 @@ export const projects = [
       },
       {
         title: "Trade-offs",
-        body: "Every choice has a cost, and I wrote them down. Cashflow takes a large space on Home, so promo cards have no room. Sliding is one gesture slower than a tap, for an action that cannot be undone. No balance before login means no quick peek. Credit, investments, joint accounts, international transfers, points and an AI assistant were left out on purpose.",
+        body: "Every choice has a cost, and I wrote them down. Cashflow takes a large space on Home, so promo cards have no room. Sliding is one gesture slower than a tap, for an action that cannot be undone. No balance before login means no quick peek. A virtual-only card leaves out merchants without contactless payment. These were left out on purpose:",
+        points: [
+          "The \"safe to spend\" figure and automatic pockets from the first PRD (v0.1), replaced by the Cashflow pillar.",
+          "A physical card, because its logistics never show on screen.",
+          "Open Virtual Accounts where the user types the amount. One fixed Virtual Account path is enough.",
+          "Split bill, points, referrals and gamification, because they do not support the two pillars.",
+          "Credit, paylater and investments, which need a licence and a risk model.",
+          "Joint and business accounts, which serve a different segment.",
+          "International transfers, which need a separate compliance path.",
+          "An AI assistant, which is outside the focus.",
+          "Web and tablet versions, because Velora is mobile-first.",
+          "Some Home tiles are drawn but not linked in the prototype yet: Scan QRIS, Top up, Pay bills, Pockets, History and the full transaction list. Whether to link them is still an open question.",
+        ],
         images: ["/assets/velora-tradeoffs.png"],
       },
       {
         title: "What is next",
-        body: "This is a concept, so nothing here is proven yet. The two questions I most want answered are whether people actually look at the Cashflow card each time they open the app, and whether sliding to send feels calming or annoying for people who transfer many times a day. The plan is to give the prototype to 6 to 8 people with a monthly salary and compare tapping versus sliding.",
+        body: "This is a concept, and there is no user evidence yet: no interviews and no user tests. The five problems, the success metric and its 90-second target are all assumptions. Three of them need checking first: that people want a money summary every time they open the app, that sliding to send prevents mistakes instead of just adding a step, and that an eye icon on every amount feels protective rather than tiresome. The plan is to give the prototype to 6 to 8 people with a monthly salary and two tasks: find this month's biggest spending, then send money to one contact. If Velora became a real product, I would track how many people open Money insights at least once a week, how often money is sent by mistake, and how many people finish login recovery. There is no data for any of these yet.",
         images: ["/assets/velora-next.png"],
       },
     ],
